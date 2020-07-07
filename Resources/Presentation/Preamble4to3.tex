@@ -1,0 +1,41 @@
+\documentclass[t]{beamer}
+\usepackage{etex}
+\usepackage[
+    orientation=landscape,
+    size=custom,
+    width=25.4,
+    height=19.05,
+    scale=0.63 % erzeugt 16pt Schriftgröße
+]{beamerposter}
+
+%\usepackage{amsmath}
+\graphicspath{{./Resources/Images/}{./Resources/_Images/}}
+
+%\DeclareMathAlphabet{\mathcal}{OMS}{cmsy}{m}{n}
+
+\newcommand{\PraesentationSchriftgroesseSehrGross}{\fontsize{30}{45}}
+\newcommand{\PraesentationSchriftgroesseGross}{\fontsize{22}{33}}
+\newcommand{\PraesentationSchriftgroesseNormal}{\fontsize{16}{29}}
+\newcommand{\PraesentationSchriftgroesseKlein}{\fontsize{12}{18}}
+\newcommand{\PraesentationSchriftgroesseDreizeiler}{\fontsize{7}{10}}
+\newcommand{\PraesentationSchriftgroesseAufzaehlungszeichen}{\fontsize{10}{8}}
+
+%\newcommand{\PraesentationUeberschriftZweizeilig}[2]{\frametitle{#1\\[8mm]#2}}
+%\renewcommand{\frametitle}{\\\vspace{-2.5cm}\oldframetitle}
+%\addtobeamertemplate{frametitle}{\\\vspace{-2.5cm}}{}
+
+\newcommand{\PraesentationAbstandAbsatz}{22.1pt}
+\newcommand{\PraesentationPositionKorrekturOben}{0cm}
+\newcommand{\PraesentationBeispieleSchriftgroessen}{30 | 22 | 16 | 12}
+
+%userdefined commands
+\newcommand{\goto}{\rightarrow}
+%\newcommand{\implies}{\Rightarrow}
+\DeclareMathOperator{\E}{\mathsf{E}}
+\DeclareMathOperator{\Var}{\mathsf{var}}
+\DeclareMathOperator{\Prob}{\mathsf{P}}
+\DeclareMathOperator{\trace}{tr}
+\DeclareMathOperator{\transpose}{\mathsf{T}}
+\DeclareMathOperator{\f}{f}
+
+\input{./Resources/Presentation/Preamble.tex}
