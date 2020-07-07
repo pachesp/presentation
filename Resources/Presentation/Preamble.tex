@@ -7,7 +7,7 @@
 \usepackage{graphicx} % Grafiken
 \usepackage[absolute, overlay]{textpos} % Positionierung
 
-\usepackage[symbol]{footmisc}
+% \usepackage[symbol]{footmisc}
 \usepackage{url}
 \usepackage[pages=some]{background}
 \usepackage{framed}
@@ -62,9 +62,9 @@
 \setbeamertemplate{bibliography item}[text]
 \setbeamercolor{bibliography entry author}{fg=black}
 \setbeamercolor{bibliography entry item}{fg=black}
-\setbeamercolor{bibliography entry title}{fg=black} 
-\setbeamercolor{bibliography entry location}{fg=black} 
-\setbeamercolor{bibliography entry note}{fg=black}  
+\setbeamercolor{bibliography entry title}{fg=black}
+\setbeamercolor{bibliography entry location}{fg=black}
+\setbeamercolor{bibliography entry note}{fg=black}
 
 \makeatletter
 \renewcommand*\env@matrix[1][\arraystretch]{%
@@ -74,3 +74,11 @@
   \array{*\c@MaxMatrixCols c}}
 \makeatother
 
+\usepackage{lipsum}% http://ctan.org/pkg/lipsum
+\usepackage{hanging}% http://ctan.org/pkg/hanging
+\setbeamertemplate{footnote}{%
+  \hangpara{2em}{1}%
+  \makebox[2em][l]{\insertfootnotemark}\footnotesize\insertfootnotetext\par%
+}
+
+\setbeamertemplate{caption}[numbered]

@@ -22,7 +22,7 @@
     \item Shallow Water Equations model \vspace{0.5cm}
     \item Scope of this thesis\vspace{0.5cm}
     \item Tools\vspace{0.5cm}
-    \item Progress\vspace{0.5cm}
+    \item Current status\vspace{0.5cm}
     \item TODOs
     \end{enumerate}
 
@@ -37,11 +37,12 @@
 %%%%%%%%%%%%%%%%%%%%
 %%%%%%%%%%%%%%%%%%%%
 \begin{frame}
-    \shiftedframetitle{SWE}
+    \shiftedframetitle{Shallow Water Equations(SWE) model}
     
 \begin{multicols}{2}
     \begin{itemize}
-\item derived from mass and momentum conservation laws, and depth averages \dots %also derived by vertical averaging from the 3d incompressible ns eqs
+\item derived from mass and momentum conservation laws, and depth averaging \dots %also derived by vertical averaging from the 3d incompressible ns eqs
+\vspace{0.5cm}
 \begin{align*}
 \begin{bmatrix}[1.5]
 h\\
@@ -65,15 +66,18 @@ hv^2 + \frac{1}{2}gh^2\\
 \end{bmatrix}\\[0.75cm]
 \frac{\partial q}{\partial t} + \dfrac{\partial F(q)}{\partial x} + &\frac{\partial G(q)}{\partial y} = S(q,x,y,t) 
 \end{align*}
-\vspace{0.25cm}
 \item $ W \ll U,V $
 \item $3D\rightarrow 2D$ 
-\item Applications: {\small Tsunamis prediction, free surface flows around structures, atmospheric flows, \dots} \\[0.35cm]
+\item Applications: {\small Tsunamis prediction, free surface flows, atmospheric flows, \dots} 
 \item hyperbolic PDE system $\rightarrow$ Riemann Problem and FVM
 \end{itemize}
     \vfill\columnbreak
     \vspace*{0.39cm}
-    \includegraphics[width=\columnwidth, height=.3\textheight]{./Resources/Images/swe.png}%
+    \begin{figure}
+        \includegraphics[width=\columnwidth, height=.4\textheight]{./Resources/Images/swe.png}%
+    \caption{SWE variables schematic \footnote{\url{https://www5.in.tum.de/SWE/lugano2013/swe_anatomy.pdf}}}
+    \end{figure}
+
 \end{multicols}
 \end{frame}
 \clearpage
@@ -88,30 +92,32 @@ hv^2 + \frac{1}{2}gh^2\\
  \hspace{0.35\columnwidth}\textbf{Background}
 
  \begin{itemize}
- \item Mintgen did theory and extended OpenFOAM with a shallowFOAM solver
- \item Chriss reproduced Mintgen by using Precice
+  \item  full description of shallowFOAM  solver for 2D SWE \cite{mintgen}
+ \item  coupling 2D SWE and 3D RANS solvers $\rightarrow$ development of shallowInterFOAM \cite{mintgen}
+ \item BSc. Christiaan Osse implemented \cite{mintgen} with open source coupling library
  \end{itemize}
     
  \vfill\columnbreak
 
 \hspace{0.35\columnwidth}\textbf{This Work}
  \begin{itemize}
- \item Extend Mintgen's idea (2D $\Longleftrightarrow$ 3D) as a flexible approach to more SWE solvers
- \item Test Case: SWE FVM solver implemented in C++ with OpenFOAM 
- \item Mapping data from-to all setups:
+ \item Extend \cite{mintgen} coupling (2D $\Longleftrightarrow$ 3D) as a flexible approach to more SWE solvers
+ \item Test Case: 2D SWE solver \& OpenFOAM 
+ \item Mapping data from-to all setups: \vspace{0.4cm}
 \begin{table}[]
-\begin{tabular}{|l|}
+\begin{tabular}{|llll|}
 \hline
-\textit{\textbf{2D $\rightarrow$ 2D}} \\ \hline
-\textit{\textbf{2D $\rightarrow$ 3D}} \\ \hline
-\textit{\textbf{3D $\rightarrow$ 2D}} \\ \hline
-\textit{\textbf{3D $\rightarrow$ 3D}} \\ \hline
+Bidirectional & 2D SWE       & - & 2D SWE       \\ \hline
+Upstream      & 2D SWE       & - & 3D OpenFOAM \\ \hline
+Upstream      & 3D OpenFOAM & - & 2D SWE       \\ \hline
+Bidirectional & 3D OpenFOAM & - & 3D OpenFOAM \\ \hline
 \end{tabular}
+\caption{Mapping setups}
+\label{table:1}
 \end{table}
 \end{itemize}
 \end{multicols}
 \end{frame}
-
 
 
 %%%%%%%%%%%%%%%%%%
@@ -120,7 +126,73 @@ hv^2 + \frac{1}{2}gh^2\\
 \begin{frame}
 	\shiftedframetitle{Tools}
 	
-Shallow Water Equations
+\begin{multicols}{2}
+
+\textbf{Shallow Water Equations Solver - Wave-propagation method.}
+\vspace{-4mm}
+\begin{itemize}
+\item Modified Wave-Propagation Method $\rightarrow$ \textit{F-Wave} \cite{levequeArticle}
+\item Implemented by SCCS chair\footnote{\url{https://github.com/TUM-I5/SWE}}
+\item Written in C++
+\item 2-D
+\end{itemize}
+\textbf{interFOAM\footnote{\url{https://openfoamwiki.net/index.php/InterFoam}} - OpenFoam Multiphase Navier-Stokes Solver}
+\vspace{-4mm}
+\begin{itemize}
+\item VoF (Volume of Fluid) Method
+\item clear distinction between gas and liquid
+\item 3-D
+\end{itemize}
+
+\vfill\columnbreak
+
+\textbf{preCICE\footnote{\url{https://github.com/precice}} - Open Source coupling library for partitioned multi-physics simulations}
+\vspace{-4mm}
+\begin{itemize}
+\item coupling \& mapping (Table \ref{table:1})
+\begin{itemize}
+\item two domains on \textit{same} dimensions/solvers
+\item two domains on \textit{different} dimensions/solvers
+\end{itemize}
+\end{itemize}
+\end{multicols}
+
+\end{frame}
+
+%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%
+
+
+\begin{frame}
+\shiftedframetitle{Current Status}
+
+\end{frame}
+
+
+%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%
+\begin{frame}
+\shiftedframetitle{Current Status}
+\vspace{-0.5cm}
+{\large \hspace{3mm} Special Considerations}
+
+\end{frame}
+
+%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%
+\begin{frame}
+\shiftedframetitle{Current Status}
+\vspace{-0.5cm}
+{\large \hspace{3mm} Some Results}
+\end{frame}
+
+%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%
+\begin{frame}
+\shiftedframetitle{TODOs}
+\end{frame}
+
+
 
 %%%%%%%%%%%%%%%%%%%
 %% Folie: Farben %%
@@ -190,37 +262,7 @@ quam voloria consenimus blabore everfer epeliquo maio etur.
 \end{frame}
 \clearpage
 
-%%%%%%%%%%%%%%%%%%%%%%
-% Folie: Aufzählung %%
-%%%%%%%%%%%%%%%%%%%%%%
-\begin{frame}
-    \shiftedframetitle{Aufzählung}
-    
-Bei kleinen Aufzählungen auf Aufzählungszeichen verzichten und ggf. zusätzliche Leerzeile.\newline
-Nur die wesentlichen Punkte nennen und Themen auf verschiedene Seiten splitten.\\
-Punkt 1\\
-Punkt 2
 
-Wenn Unterpunkte in einer Aufzählung nötig sind ist ein Einrücken mit \PraesentationAufzaehlungEbeneZweiSymbol{} möglich
-
-\begin{PraesentationAufzaehlung}
-    \item Unterpunkt 1
-        \begin{itemize}
-            \item Unterpunkt 1
-            \item Unterpunkt 2
-        \end{itemize}
-\end{PraesentationAufzaehlung}
-
-Bei größeren Listen die Standardeinstellung \PraesentationAufzaehlungEbeneEinsSymbol{} verwenden
-
-\begin{PraesentationAufzaehlung}
-    \item Unterpunkt 1
-    \item Unterpunkt 2
-    \item Unterpunkt 3
-\end{PraesentationAufzaehlung}
-
-\end{frame}
-\clearpage
 
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
