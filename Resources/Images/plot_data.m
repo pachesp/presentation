@@ -28,7 +28,7 @@ h_bidi_g_bueno = bidirectionalArr_g_bueno(:, 1);
 
 figure
 plot(x, h_bidi_g_0, x, h_bidi_g_bueno)
-axis([600, 1600, 8, 11.5])
+axis([600, 1300, 8, 11.5])
 grid on
 title('Bidirectional 2D-2D, t=20')
 xlabel('x')
