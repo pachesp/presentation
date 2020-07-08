@@ -99,9 +99,9 @@ hv^2 + \frac{1}{2}gh^2\\
  \hspace{0.35\columnwidth}{\large\textbf{Background}}
  \begin{itemize}
    \setlength\itemsep{2em}
-  \item  full description of shallowFOAM  solver for 2D SWE \cite{mintgen}
- \item  coupling 2D SWE and 3D RANS solvers $\rightarrow$ shallowInterFOAM \cite{mintgen}
- \item BSc. Christiaan Osse implemented \cite{mintgen} with open source coupling library
+  \item  full description of \textit{shallowFOAM}  solver for 2D SWE \cite{mintgen}
+ \item  coupling 2D SWE and 3D RANS solvers $\rightarrow$ development of \textit{shallowInterFOAM} \cite{mintgen}
+ \item BSc. Christiaan Osse\footnote{Thesis published during this thesis} implemented \cite{mintgen} with \textit{preCICE}
  \end{itemize}
     
  \vfill\columnbreak
@@ -125,6 +125,7 @@ Bidirectional & 3D OpenFOAM & - & 3D OpenFOAM \\ \hline
 \caption{Mapping setups}
 \label{table:1}
 \end{table}
+\item<6-> \textbf{\textit{Extend preCICE adapter for handling 3D domains}}
 \end{itemize}
 \end{itemize}
 \end{multicols}
@@ -149,13 +150,13 @@ Bidirectional & 3D OpenFOAM & - & 3D OpenFOAM \\ \hline
 \vspace{5pt}
  \setlength\itemsep{6pt}
 \item Modified Wave-Propagation Method $\rightarrow$ \textit{F-Wave} \cite{levequeArticle}
-\item Implemented by SCCS chair\footnote{\url{https://github.com/TUM-I5/SWE}}
+\item Developed at SCCS\footnote{\url{https://github.com/TUM-I5/SWE}}
 \item Written in C++
 \item 2-D
 \end{itemize}
 
 \item<3->[]
-\textbf{interFOAM\footnote{\url{https://openfoamwiki.net/index.php/InterFoam}} - OpenFoam Multiphase Navier-Stokes Solver}
+\textbf{\textit{interFOAM}\footnote{\url{https://openfoamwiki.net/index.php/InterFoam}} - OpenFoam Multiphase Navier-Stokes Solver}
 \begin{itemize}
 \vspace{5pt}
  \setlength\itemsep{6pt}
@@ -187,7 +188,34 @@ Bidirectional & 3D OpenFOAM & - & 3D OpenFOAM \\ \hline
 
 \begin{frame}
 \shiftedframetitle{Current Status}
+\begin{multicols}{2}
+\begin{itemize}
+\item<1->[]
+{\renewcommand{\arraystretch}{2.5} %<- modify value to suit your needs
+\begin{table}[]
+\begin{tabular}{ cl }
+{\large\textbf{Progress}} & {\large\hspace{5pt} \textbf{Implementation}}\\
+\includegraphics[scale=0.5]{./Resources/Images/bar1.png} & \hspace{5pt}Bidirectional 2D SWE - 2D SWE  \\ 
+\includegraphics[scale=0.5]{./Resources/Images/bar2.png} &\hspace{5pt} Upstream 2D SWE - 3D OF \\ 
+\includegraphics[scale=0.5]{./Resources/Images/bar2.png} &\hspace{5pt} Upstream 3D OF - 2D SWE \\ 
+\includegraphics[scale=0.5]{./Resources/Images/bar3.png} & \hspace{5pt} Bidirectional 3D OF - 3D OF \\
+\end{tabular}
 
+\end{table}
+}
+
+\vfill\columnbreak
+
+\item<2->[] \hspace{0.35\columnwidth}{\Large\textbf{Challenges}}\\[2.5cm]
+\item<3->[] {\Large\hspace{0.23\columnwidth}Boundary Conditions!!}
+\begin{itemize}
+ \setlength{\itemindent}{3.5cm}
+\vspace{0.5cm}
+\item<4-> Inflow / Outflow 
+\item<4-> Dirchlet / Neumann / Robin
+\end{itemize}
+\end{itemize}
+\end{multicols}
 \end{frame}
 
 
@@ -213,9 +241,26 @@ add results
 %%%%%%%%%%%%%%%%%%
 \begin{frame}
 \shiftedframetitle{TODOs}
-add drawings
+
+\begin{figure}
+\includegraphics[scale=0.5]{./Resources/Images/mapping23.png}%
+\caption{mapping 2D to 3D}
+\end{figure}
+
 \end{frame}
 
+
+%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%
+\begin{frame}
+\shiftedframetitle{TODOs}
+
+\begin{figure}
+\includegraphics[scale=0.5]{./Resources/Images/mapping32.png}%
+\caption{mapping 3D to 2D}
+\end{figure}
+
+\end{frame}
 
 
 %%%%%%%%%%%%%%%%%%%
