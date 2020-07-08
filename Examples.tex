@@ -16,7 +16,7 @@
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 \begin{frame}
-    \shiftedframetitle{Contents}
+    \shiftedframetitle{Content}
     
     \begin{enumerate}
     \item Shallow Water Equations model \vspace{0.5cm}
@@ -37,12 +37,15 @@
 %%%%%%%%%%%%%%%%%%%%
 %%%%%%%%%%%%%%%%%%%%
 \begin{frame}
-    \shiftedframetitle{Shallow Water Equations(SWE) model}
+    \shiftedframetitle{Shallow Water Equations (SWE) model}
     
 \begin{multicols}{2}
-    \begin{itemize}
+\begin{itemize}
+
+\item<2->[]
+\begin{itemize}
 \item derived from mass and momentum conservation laws, and depth averaging \dots %also derived by vertical averaging from the 3d incompressible ns eqs
-\vspace{0.5cm}
+\vspace{5pt}
 \begin{align*}
 \begin{bmatrix}[1.5]
 h\\
@@ -63,21 +66,23 @@ hv^2 + \frac{1}{2}gh^2\\
 0\\
 -gh\frac{\partial b}{\partial x}\\
 -gh\frac{\partial b}{\partial y}
-\end{bmatrix}\\[0.75cm]
+\end{bmatrix}\\[1em]
 \frac{\partial q}{\partial t} + \dfrac{\partial F(q)}{\partial x} + &\frac{\partial G(q)}{\partial y} = S(q,x,y,t) 
 \end{align*}
-\item $ W \ll U,V $
-\item $3D\rightarrow 2D$ 
-\item Applications: {\small Tsunamis prediction, free surface flows, atmospheric flows, \dots} 
-\item hyperbolic PDE system $\rightarrow$ Riemann Problem and FVM
+\vspace{1em}
+\item<3-> $ W \ll U,V $\\[0.5em]
+\item<4-> $3D\rightarrow 2D$ \\[0.5em]
+\item<5-> Applications: {\small Free surface flows, tsunamis prediction, atmospheric flows, \dots} \\[0.5em]
+\item<6-> hyperbolic PDE system $\rightarrow$ Riemann Problem and FVM
 \end{itemize}
     \vfill\columnbreak
     \vspace*{0.39cm}
-    \begin{figure}
-        \includegraphics[width=\columnwidth, height=.4\textheight]{./Resources/Images/swe.png}%
-    \caption{SWE variables schematic \footnote{\url{https://www5.in.tum.de/SWE/lugano2013/swe_anatomy.pdf}}}
-    \end{figure}
-
+\item<1->[]
+\begin{figure}
+\includegraphics[width=\columnwidth, height=.4\textheight]{./Resources/Images/swe.png}%
+\caption{SWE variables schematic \footnote{\url{https://www5.in.tum.de/SWE/lugano2013/swe_anatomy.pdf}}}
+\end{figure}
+\end{itemize}
 \end{multicols}
 \end{frame}
 \clearpage
@@ -87,23 +92,28 @@ hv^2 + \frac{1}{2}gh^2\\
 
 \begin{frame}
 \shiftedframetitle{Scope of this thesis}
-\begin{multicols}{2}
-    
- \hspace{0.35\columnwidth}\textbf{Background}
 
+\begin{multicols}{2}
+\begin{itemize}
+\item<1->[]    
+ \hspace{0.35\columnwidth}{\large\textbf{Background}}
  \begin{itemize}
+   \setlength\itemsep{2em}
   \item  full description of shallowFOAM  solver for 2D SWE \cite{mintgen}
- \item  coupling 2D SWE and 3D RANS solvers $\rightarrow$ development of shallowInterFOAM \cite{mintgen}
+ \item  coupling 2D SWE and 3D RANS solvers $\rightarrow$ shallowInterFOAM \cite{mintgen}
  \item BSc. Christiaan Osse implemented \cite{mintgen} with open source coupling library
  \end{itemize}
     
  \vfill\columnbreak
 
-\hspace{0.35\columnwidth}\textbf{This Work}
+\item<2->[]
+\hspace{0.35\columnwidth}{\large\textbf{Goals}}
  \begin{itemize}
- \item Extend \cite{mintgen} coupling (2D $\Longleftrightarrow$ 3D) as a flexible approach to more SWE solvers
- \item Test Case: 2D SWE solver \& OpenFOAM 
- \item Mapping data from-to all setups: \vspace{0.4cm}
+    \setlength\itemsep{2em}
+
+ \item<3-> Extend \cite{mintgen} coupling (2D $\Longleftrightarrow$ 3D) as a flexible approach to SWE solvers
+ \item<4-> Test Case: 2D SWE solver \& OpenFOAM 
+ \item<5-> Coupling \& Mapping data from/to all setups: \vspace{0.4cm}
 \begin{table}[]
 \begin{tabular}{|llll|}
 \hline
@@ -116,7 +126,10 @@ Bidirectional & 3D OpenFOAM & - & 3D OpenFOAM \\ \hline
 \label{table:1}
 \end{table}
 \end{itemize}
+\end{itemize}
 \end{multicols}
+
+
 \end{frame}
 
 
@@ -125,36 +138,45 @@ Bidirectional & 3D OpenFOAM & - & 3D OpenFOAM \\ \hline
 
 \begin{frame}
 	\shiftedframetitle{Tools}
-	
+ 	
 \begin{multicols}{2}
-
-\textbf{Shallow Water Equations Solver - Wave-propagation method.}
-\vspace{-4mm}
 \begin{itemize}
+ \setlength\itemsep{10pt}
+
+\item<2->[]
+\textbf{Shallow Water Equations Solver - Wave-propagation method.}
+\begin{itemize}
+\vspace{5pt}
+ \setlength\itemsep{6pt}
 \item Modified Wave-Propagation Method $\rightarrow$ \textit{F-Wave} \cite{levequeArticle}
 \item Implemented by SCCS chair\footnote{\url{https://github.com/TUM-I5/SWE}}
 \item Written in C++
 \item 2-D
 \end{itemize}
+
+\item<3->[]
 \textbf{interFOAM\footnote{\url{https://openfoamwiki.net/index.php/InterFoam}} - OpenFoam Multiphase Navier-Stokes Solver}
-\vspace{-4mm}
 \begin{itemize}
-\item VoF (Volume of Fluid) Method
-\item clear distinction between gas and liquid
+\vspace{5pt}
+ \setlength\itemsep{6pt}
+\item VoF (Volume of Fluid) method
+\item immiscible fluids (gas and liquid)
 \item 3-D
 \end{itemize}
 
 \vfill\columnbreak
-
+\item<4->[]
 \textbf{preCICE\footnote{\url{https://github.com/precice}} - Open Source coupling library for partitioned multi-physics simulations}
-\vspace{-4mm}
 \begin{itemize}
-\item coupling \& mapping (Table \ref{table:1})
+\vspace{5pt}
+\item coupling \& mapping {\tiny (see table \ref{table:1})}
 \begin{itemize}
 \item two domains on \textit{same} dimensions/solvers
 \item two domains on \textit{different} dimensions/solvers
 \end{itemize}
 \end{itemize}
+\end{itemize}
+
 \end{multicols}
 
 \end{frame}
@@ -184,12 +206,14 @@ Bidirectional & 3D OpenFOAM & - & 3D OpenFOAM \\ \hline
 \shiftedframetitle{Current Status}
 \vspace{-0.5cm}
 {\large \hspace{3mm} Some Results}
+add results
 \end{frame}
 
 %%%%%%%%%%%%%%%%%%
 %%%%%%%%%%%%%%%%%%
 \begin{frame}
 \shiftedframetitle{TODOs}
+add drawings
 \end{frame}
 
 
