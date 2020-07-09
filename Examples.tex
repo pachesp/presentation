@@ -274,7 +274,10 @@ $3D$ OpenFOAM & $\rightarrow$ & $3D$ OpenFOAM \\ \hline
 %%%%%%%%%%%%%%%%%%
 \begin{frame}
 \shiftedframetitle{Boundary Conditions}
-
+\begin{figure}
+\includegraphics[scale=0.44]{./Resources/Images/bcs_mintgen.png}
+\caption{Boundary condition used by \cite{mintgen}}
+\end{figure}
 \end{frame}
 
 %%%%%%%%%%%%%%%%%%
@@ -282,7 +285,7 @@ $3D$ OpenFOAM & $\rightarrow$ & $3D$ OpenFOAM \\ \hline
 \begin{frame}
 \shiftedframetitle{Current Status}
 \vspace{-0.5cm}
-{\large \hspace{3mm} $2D$ SWE - $2D$ SWE Unidirectional}\\
+{\large $2D$ SWE - $2D$ SWE \textbf{\myBlu{Unidirectional}}}\\
 Case: Radial dam break, no bathymetry
 \begin{textblock*}{1cm}(17cm,1pt) % {block width} (coords)
 %\begin{figure}
@@ -308,7 +311,7 @@ Case: Radial dam break, no bathymetry
 \begin{frame}
 \shiftedframetitle{Current Status}
 \vspace{-0.5cm}
-{\large \hspace{3mm} $2D$ SWE - $2D$ SWE Bidirectional}\\
+{\large $2D$ SWE - $2D$ SWE \textbf{\myBlu{Bidirectional}}}\\
 Case: Radial dam break, no bathymetry
 \begin{textblock*}{1cm}(17cm,1pt) % {block width} (coords)
 %\begin{figure}
@@ -327,42 +330,41 @@ Case: Radial dam break, no bathymetry
 
 \end{frame}
 
-%%%%%%%%%%%%%%%%%%
-%%%%%%%%%%%%%%%%%%
-%\begin{frame}
-%\shiftedframetitle{Current Status}
-%\vspace{-0.5cm}
-%{\large \hspace{3mm} 2D SWE - 2D SWE Bidirectional}\\
-%Case: Radial Dam Break, Bathymetry = 0, Top: gradient $\neq 0$. Bottom: gradient $=0$
-%\begin{multicols}{2}
-%
-%\begin{figure}
-%\includegraphics[scale=0.15]{./Resources/Images/bidirectional0.png}%
-%\end{figure}
-%
-%\begin{figure}
-%\includegraphics[scale=0.15]{./Resources/Images/bidirectional.png}%
-%\end{figure}
-%
-%\vfill\columnbreak
-%
-%\begin{figure}
-%\includegraphics[scale=0.32]{./Resources/Images/bidirectional_lines.png}%
-%\end{figure}
-%\end{multicols}
-%
-%\end{frame}
-
-
 
 %%%%%%%%%%%%%%%%%%
 %%%%%%%%%%%%%%%%%%
 \begin{frame}
 \shiftedframetitle{TO-DOs}
+\vspace{-2mm}
+{\large Unidirectional Cases}\\
+\begin{multicols}{2}
+\begin{itemize}
+\setlength\itemsep{2em}
+\item \myGre{2D SWE} domain $\Longleftrightarrow$ \myGre{3D interFOAM } domain 
+\item fit \myGre{FF adapter} preCICE   
+\item \myGre{Exchange} of variables
+\begin{itemize}
+\setlength\itemsep{1em}
+\vspace{5pt}
+\item discharges $hu, hv$
+\item height $h$
+\item volume indicator $\alpha$
+\item \myGre{BCs} $->$ Dirchlet? Neumann? Robin?
+\end{itemize}
+\end{itemize}
+
+\vfill\columnbreak
 
 \begin{figure}
-\includegraphics[scale=0.5]{./Resources/Images/mapping23.png}%
+\includegraphics[scale=0.4]{./Resources/Images/mapping23.png}
+\\
+\includegraphics[scale=0.4]{./Resources/Images/mapping32.png}
+
+%\caption<1>{mapping $2D$ to $3D$}
+%\caption<2>{mapping $3D$ to $2D$}
 \end{figure}
+
+\end{multicols}
 
 \end{frame}
 
@@ -371,13 +373,36 @@ Case: Radial dam break, no bathymetry
 %%%%%%%%%%%%%%%%%%
 \begin{frame}
 \shiftedframetitle{TO-DOs}
+\vspace{-2mm}
+{\large Bidirectional $3D$}\\
+\begin{multicols}{2}
+\begin{itemize}
+\setlength\itemsep{2em}
+\item 3D interFOAM  \textit{left} $\Longleftrightarrow$ \textit{right} domains
+\item fit \myGre{FF adapter} preCICE   
+\item \myGre{Exchange} of variables
+\begin{itemize}
+\setlength\itemsep{1em}
+\vspace{5pt}
+\item discharges $hu, hv$
+\item height $h$
+\item volume indicator $\alpha$
+\item \myGre{BCs} $->$ Dirchlet? Neumann? Robin?
+\end{itemize}
+\end{itemize}
+
+\vfill\columnbreak
 
 \begin{figure}
-\includegraphics[scale=0.5]{./Resources/Images/mapping32.png}%
-\caption{mapping $3D$ to $2D$}
+\includegraphics[scale=0.5]{./Resources/Images/mapping33.png}
+%\caption<1>{mapping $2D$ to $3D$}
+%\caption<2>{mapping $3D$ to $2D$}
 \end{figure}
 
+\end{multicols}
+
 \end{frame}
+
 
 
 %%%%%%%%%%%%%%%%%%%%
