@@ -41,7 +41,7 @@
     \shiftedframetitle{Shallow Water Equations (SWE) model}
 \vspace{-3mm}
 \begin{itemize}
-\item<2-> Starting with Navier-Stokes Equation for \textbf{incompressible inviscid} flow(\ref{ns}) and mass continuity law (\ref{cont})
+\item<2-> Starting with Navier-Stokes Equation for \textbf{incompressible inviscid} flow(\ref{ns}) and \textbf{mass continuity law}(\ref{cont})
 \begin{align}
 \frac{\partial u}{\partial t} + u\frac{\partial u}{\partial x} + v\frac{\partial u}{\partial y} + w\frac{\partial u}{\partial z} &= - \frac{\partial p}{\partial x} \nonumber \\ 
 \frac{\partial v}{\partial t} + u\frac{\partial v}{\partial x} + v\frac{\partial v}{\partial y} + w\frac{\partial v}{\partial z}&= - \frac{\partial p}{\partial y} \label{ns} \\ 
@@ -49,7 +49,8 @@
 \frac{\partial u}{\partial x} + \frac{\partial v}{\partial y} + \frac{\partial w}{\partial z} &= 0 \label{cont}
 \end{align}
 
-\item<3-> As first assumption, $L \ll H$, which from (\ref{cont}) it leads to $u,v\ll z$. Second assumption: \myBlu{vertical momentum exchange is negligible}. This leads to
+\item<3-> First assumption:
+  $L \ll H$, which from (\ref{cont}) it leads to $u,v\ll w$. Second assumption: \myBlu{vertical momentum exchange is negligible}. This leads to
 \begin{align}
 \frac{\partial u}{\partial t} + u\frac{\partial u}{\partial x} + u\frac{\partial v}{\partial y} + u\frac{\partial w}{\partial z} &= - \frac{\partial p}{\partial x} \nonumber \nonumber \\ 
 \frac{\partial v}{\partial t} + v\frac{\partial u}{\partial x} + v\frac{\partial v}{\partial y} + v\frac{\partial w}{\partial z}&= - \frac{\partial p}{\partial y} \nonumber \\ 
@@ -67,12 +68,12 @@ which provides a \myBlu{solution for the pressure} as a function of the sea floo
     \shiftedframetitle{Shallow Water Equations (SWE) model {\small(cont.)}}
 \vspace{-3mm}
 \begin{itemize}
-\item<1-> From (\ref{cont}), we can carry out a \myOra{depth-averaged integration} on the continuity equation, that is 
+\item<1-> From (\ref{cont}), we can carry out a \myOra{depth-averaged integration} on the \myOra{continuity equation}, that is 
 \begin{align}
 \myOra{\int_a^b} (\frac{\partial u}{\partial x} + \frac{\partial v}{\partial y} + \myOra{\frac{\partial w}{\partial z}})\ \myOra{dz} &= 0 \nonumber \\[0.2cm]
 \myOra{\frac{\partial h}{\partial t}} + \frac{\partial hu}{\partial x} + \frac{\partial hv}{\partial y} &= 0
 \end{align}
-\item<2-> Lastly, from (\ref{ns}) and making use of \myRed{\textit{Leibnitz Integral Rule}, depth-average integration on the momentum equation}, some kinematic boundary conditions on the water surface \cite{depthAv}, and from (\ref{press}), we get the model for SWE
+\item<2-> Lastly, from (\ref{ns}) and making use of \myRed{\textit{Leibnitz Integral Rule}, depth-averaged integration} on the \myRed{momentum equation}, some kinematic boundary conditions on the water surface \cite{depthAv}, and from (\ref{press}), we get the model for SWE
 \begin{align}
 \frac{\partial \myRed{hu}}{\partial t} + \frac{\partial}{\partial x}(\myRed{hu^2} + \myBlu{\frac{1}{2}\rho g h^2}) + \frac{\partial \myRed{huv}}{\partial y} &= \myBlu{- gh\frac{\partial b}{\partial x}} \\
 \frac{\partial \myRed{hv}}{\partial t} + \frac{\partial \myRed{huv}}{\partial x} + \frac{\partial}{\partial y}(\myRed{hv^2} + \myBlu{\frac{1}{2}\rho g h^2})&= \myBlu{- gh\frac{\partial b}{\partial y} }
@@ -97,23 +98,24 @@ h\\
 hu\\
 hv\\
 \end{bmatrix}_t \ + \ 
-\begin{bmatrix}[1.5]
+\begin{bmatrix}[1.0]
 hu\\
 hu^2 + \frac{1}{2}gh^2\\
 huv\\
 \end{bmatrix}_x\ &+ \ 
-\begin{bmatrix}[1.3]
+\begin{bmatrix}[1.0]
 hv\\
 huv\\
 hv^2 + \frac{1}{2}gh^2\\
 \end{bmatrix}_y = 
-\begin{bmatrix}[1.3]
+\begin{bmatrix}[1.0]
 0\\
--gh\frac{\partial b}{\partial x}\\
--gh\frac{\partial b}{\partial y}
-\end{bmatrix}\\[1em]
+-ghb_x\\
+-ghb_y
+\end{bmatrix}\\[2em]
 \frac{\partial q}{\partial t} + \dfrac{\partial F(q)}{\partial x} + &\frac{\partial G(q)}{\partial y} = S(q,x,y,t) 
 \end{align*}
+\vspace{5pt}
 \item[]
 \begin{figure}
 \includegraphics[scale=0.2]{./Resources/Images/swe.png}%
@@ -127,7 +129,7 @@ hv^2 + \frac{1}{2}gh^2\\
 \begin{itemize}
 \setlength\itemsep{2em}
 \item<2->[] The \textbf{\myGre{Shallow Water Equations}} \dots
-\item<3-> \myGre{neglect vertical velocity};  $ W \ll U,V $, since horizontal distances $\gg$ vertical distance 
+\item<3-> \myGre{neglect vertical velocity};  $ W \ll U,V $, since horizontal distances $L$ $\gg$ vertical distance $H$
 \item<4-> simplify \myGre{$3D$} Navier-Stokes \myGre{to} a \myGre{$2D$} system of equations
 \item<5-> represent a \myGre{hyperbolic PDE} system $\rightarrow$ \myGre{Riemann} Problem and \myGre{FVM}
 \item<6-> Applications: {\small \myGre{Free surface} flows around structures, tsunamis prediction, atmospheric flows, \dots}
@@ -145,28 +147,29 @@ hv^2 + \frac{1}{2}gh^2\\
 
 \begin{multicols}{2}
 \begin{itemize}
-\item<1->[]    
+\item<2->[]    
  \hspace{0.35\columnwidth}{\large\textbf{Background}}
+ \vspace{3em}
  \begin{itemize}
-   \setlength\itemsep{2em}
-  \item  full description of \textit{shallowFOAM}  solver for $2D$ SWE \cite{mintgen}
- \item  coupling $2D$ SWE and $3D$ RANS solvers $\rightarrow$ development of \textit{shallowInterFOAM} \cite{mintgen}
- \item BSc. Christiaan Osse\footnote{Thesis published during this thesis} implemented \cite{mintgen} with \textit{preCICE}
+  \setlength\itemsep{2em}
+  \item  full description of \myBlu{\textit{shallowFOAM}}  solver for \myBlu{$2D$} SWE \cite{mintgen}
+ \item  \myBlu{coupling $2D$} SWE and \myBlu{$3D$} RANS solvers $\rightarrow$ development of \textit{shallowInterFOAM} \cite{mintgen}
+ \item BSc. Christiaan Osse implemented \cite{mintgen} with \myBlu{\textit{preCICE}}
  \end{itemize}
     
- \vfill\columnbreak
+\vfill\columnbreak
 
-\item<2->[]
+\item<3->[]
 \hspace{0.35\columnwidth}{\large\textbf{Goals}}
+\vspace{3em}
  \begin{itemize}
     \setlength\itemsep{2em}
 
- \item<3-> Extend \cite{mintgen} coupling ($2D$ $\Longleftrightarrow$ $3D$) as a flexible approach to SWE solvers
- \item<4-> Test Case: $2D$ SWE solver \& OpenFOAM 
- \item<5-> Coupling \& Mapping data from/to all setups: \vspace{0.4cm}
+ \item<4-> \myCRed{Extend} \cite{mintgen} coupling ($2D$ $\Longleftrightarrow$ $3D$) as a \myCRed{flexible} approach to SWE solvers
+ \item<5-> Test Case: $2D$ SWE solver \& OpenFOAM 
+ \item<6-> \myCRed{Coupling} \& \myCRed{Mapping} data from/to all setups: \vspace{0.4cm}
 \begin{table}[]
-\begin{tabular}{|lll|}
-\hline
+\begin{tabular}{|lll|}\hline
 $2D$ SWE       & $\rightarrow$ & $2D$ SWE       \\ \hline
 $2D$ SWE       & $\rightarrow$ & $3D$ OpenFOAM \\ \hline
 $3D$ OpenFOAM & $\rightarrow$ & $2D$ SWE       \\ \hline
@@ -175,7 +178,7 @@ $3D$ OpenFOAM & $\rightarrow$ & $3D$ OpenFOAM \\ \hline
 \caption{Mapping setups}
 \label{table:1}
 \end{table}
-\item<6-> \textbf{\textit{Extend preCICE adapter for handling $3D$ domains}}
+\item<7-> \textbf{\textit{\myCRed{Extend preCICE} adapter for handling $3D$ domains}}
 \end{itemize}
 \end{itemize}
 \end{multicols}
@@ -195,35 +198,34 @@ $3D$ OpenFOAM & $\rightarrow$ & $3D$ OpenFOAM \\ \hline
  \setlength\itemsep{10pt}
 
 \item<2->[]
-\textbf{Shallow Water Equations Solver - Wave-propagation method.}
+\textbf{Shallow Water Equations Solver - {\small Wave-propagation method.}}
 \begin{itemize}
 \vspace{5pt}
  \setlength\itemsep{6pt}
-\item Modified Wave-Propagation Method $\rightarrow$ \textit{F-Wave} \cite{levequeArticle}
+\item Modified Wave-Propagation Method $\rightarrow$ \myRed{\textit{F-Wave}} \cite{levequeArticle}
 \item Developed at SCCS\footnote{\url{https://github.com/TUM-I5/SWE}}
-\item Written in C++
+\item Written in \myRed{C++}
 \item $2D$
 \end{itemize}
 
 \item<3->[]
-\textbf{\textit{interFOAM}\footnote{\url{https://openfoamwiki.net/index.php/InterFoam}} - OpenFoam Multiphase Navier-Stokes Solver}
+\textbf{\textit{interFOAM}\footnote{\url{https://openfoamwiki.net/index.php/InterFoam}} - {\small OpenFoam Multiphase Navier-Stokes Solver}}
 \begin{itemize}
 \vspace{5pt}
  \setlength\itemsep{6pt}
-\item VoF (Volume of Fluid) method
-\item immiscible fluids (gas and liquid)
-\item $3D$
+\item \myRed{VoF} (Volume of Fluid) method $\rightarrow$ phase-fraction interphase approach \myRed{$\rho=\alpha\rho_1 + (1-\alpha)\rho_2$} 
+\item immiscible fluids (2-Phase)
+\item \myRed{$3D$}
 \end{itemize}
 
 \vfill\columnbreak
 \item<4->[]
-\textbf{preCICE\footnote{\url{https://github.com/precice}} - Open Source coupling library for partitioned multi-physics simulations}
+\textbf{preCICE\footnote{\url{https://github.com/precice}} - \small{Open Source coupling library for partitioned multi-physics simulations}}
 \begin{itemize}
 \vspace{5pt}
 \item coupling \& mapping {\tiny (see table \ref{table:1})}
 \begin{itemize}
-\item two domains on \textit{same} dimensions/solvers
-\item two domains on \textit{different} dimensions/solvers
+\item[] two domains on \myRed{\textit{same} or \textit{different}} dimensions/solvers
 \end{itemize}
 \end{itemize}
 \end{itemize}
@@ -295,7 +297,7 @@ Case: Radial dam break, no bathymetry
 \includegraphics[width=.25\textwidth]{./Resources/Images/unidirectional20_g_bueno.png}\hfill
 \includegraphics[width=.4\textwidth]{./Resources/Images/unidirectional_graph.png}
 
-\caption{Top right: $h(t=0)$. Left: $h(t=20)$ grad $=0$, Middle: $h(t=20)$ grad $\neq0$. Right: graphed values at the middle of the domain}
+\caption{Top right: $h(t=0)$. Left: $h(t=20), \nabla_\eta=0$. Middle: $h(t=20),\nabla_\eta \neq0$. Right: graphed values at the middle of the domain}
 \end{figure}
 
 \end{frame}
@@ -320,7 +322,7 @@ Case: Radial dam break, no bathymetry
 \includegraphics[width=.25\textwidth]{./Resources/Images/bidirectional20_g_0.png}\hfill
 \includegraphics[width=.25\textwidth]{./Resources/Images/bidirectional20_g_bueno.png}\hfill
 \includegraphics[width=.4\textwidth]{./Resources/Images/bidirectional_graph.png}
-\caption{Top right: $h(t=0)$. Left: $h(t=20)$ grad $=0$, Middle: $h(t=20)$ grad $\neq0$. Right: graphed values at the middle of the domain}
+\caption{Top right: $h(t=0)$. Left: $h(t=20),\nabla_\eta=0$. Middle: $h(t=20)$,$\nabla_\eta \neq0$. Right: graphed values at the middle of the domain}
 \end{figure}
 
 \end{frame}
