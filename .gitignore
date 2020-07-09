@@ -26,3 +26,4 @@
 *.nav
 *.snm
 build/
+*.m~
