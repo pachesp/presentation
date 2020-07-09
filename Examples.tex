@@ -49,7 +49,7 @@
 \frac{\partial u}{\partial x} + \frac{\partial v}{\partial y} + \frac{\partial w}{\partial z} &= 0 \label{cont}
 \end{align}
 
-\item<3-> \underline{First assumption}: $L \ll H$, which from (\ref{cont}) it leads to $u,v\ll w$. \underline{Second assumption}: \myBlu{vertical momentum exchange is negligible}. This leads to
+\item<3-> \underline{First assumption}: $L \gg H$, which from (\ref{cont}) it leads to $u,v\gg w$. \underline{Second assumption}: \myBlu{vertical momentum exchange is negligible}. This leads to
 \begin{align}
 \frac{\partial u}{\partial t} + u\frac{\partial u}{\partial x} + u\frac{\partial v}{\partial y} + u\frac{\partial w}{\partial z} &= - \frac{\partial p}{\partial x} \nonumber \nonumber \\ 
 \frac{\partial v}{\partial t} + v\frac{\partial u}{\partial x} + v\frac{\partial v}{\partial y} + v\frac{\partial w}{\partial z}&= - \frac{\partial p}{\partial y} \nonumber \\ 
@@ -129,9 +129,10 @@ hv^2 + \frac{1}{2}gh^2\\
 \setlength\itemsep{2em}
 \item<2->[] The \textbf{\myGre{Shallow Water Equations}} \dots
 \item<3-> \myGre{neglect vertical velocity};  $ W \ll U,V $, since horizontal distances $L$ $\gg$ vertical distance $H$
-\item<4-> simplify \myGre{$3D$} Navier-Stokes \myGre{to} a \myGre{$2D$} system of equations
-\item<5-> represent a \myGre{hyperbolic PDE} system $\rightarrow$ \myGre{Riemann} Problem and \myGre{FVM}
-\item<6-> Applications: {\small \myGre{Free surface} flows around structures, tsunamis prediction, atmospheric flows, \dots}
+\item<4-> provides a \myGre{solution} for the \myGre{pressure}
+\item<5-> simplify \myGre{$3D$} Navier-Stokes \myGre{to} a \myGre{$2D$} system of equations
+\item<6-> represent a \myGre{hyperbolic PDE} system $\rightarrow$ \myGre{Riemann} Problem and \myGre{FVM}
+\item<7-> Applications: {\small \myGre{Free surface} flows around structures, tsunamis prediction, atmospheric flows, \dots}
 \end{itemize}
 \end{multicols}
 
@@ -177,7 +178,7 @@ $3D$ OpenFOAM & $\rightarrow$ & $3D$ OpenFOAM \\ \hline
 \caption{Mapping setups}
 \label{table:1}
 \end{table}
-\item<7-> \textbf{\textit{\myCRed{Extend preCICE} adapter for handling $3D$ domains}}
+\item<7-> \textbf{\textit{\myCRed{Extend preCICE} adapter for handling $2D\Longleftrightarrow3D$ domains}}
 \end{itemize}
 \end{itemize}
 \end{multicols}
@@ -204,7 +205,7 @@ $3D$ OpenFOAM & $\rightarrow$ & $3D$ OpenFOAM \\ \hline
 \item Modified Wave-Propagation Method $\rightarrow$ \myRed{\textit{F-Wave}} \cite{levequeArticle}
 \item Developed at SCCS\footnote{\url{https://github.com/TUM-I5/SWE}}
 \item Written in \myRed{C++}
-\item $2D$
+\item \myRed{$2D$}
 \end{itemize}
 
 \item<3->[]
@@ -257,13 +258,14 @@ $3D$ OpenFOAM & $\rightarrow$ & $3D$ OpenFOAM \\ \hline
 
 \vfill\columnbreak
 
-\item<2->[] \hspace{0.35\columnwidth}{\Large\textbf{Challenges}}\\[2.5cm]
-\item<3->[] {\Large\hspace{0.23\columnwidth}Boundary Conditions!!}
+\item<2->[] \hspace{0.35\columnwidth}{\Large\textbf{Challenges}}\\[2cm]
+\item<3->[] \hspace{0.23\columnwidth} map $h, p$ between models\\[1cm]
+\item<4->[] {\Large\hspace{0.23\columnwidth}Boundary Conditions!!}
 \begin{itemize}
  \setlength{\itemindent}{3.5cm}
-\vspace{0.5cm}
-\item<4-> Inflow / Outflow 
-\item<4-> Dirchlet / Neumann / Robin
+\vspace{0.2cm}
+\item<5-> Inflow / Outflow 
+\item<5-> Dirchlet / Neumann / Robin
 \end{itemize}
 \end{itemize}
 \end{multicols}
@@ -340,7 +342,7 @@ Case: Radial dam break, no bathymetry
 \begin{itemize}
 \setlength\itemsep{2em}
 \item \myGre{2D SWE} domain $\Longleftrightarrow$ \myGre{3D interFOAM } domain 
-\item fit \myGre{FF adapter} preCICE   
+\item fit \myGre{Fluid-Fluid adapter} preCICE   
 \item \myGre{Exchange} of variables
 \begin{itemize}
 \setlength\itemsep{1em}
@@ -378,7 +380,7 @@ Case: Radial dam break, no bathymetry
 \begin{itemize}
 \setlength\itemsep{2em}
 \item 3D interFOAM  \textit{left} $\Longleftrightarrow$ \textit{right} domains
-\item fit \myGre{FF adapter} preCICE   
+\item fit \myGre{Fluid-Fluid adapter} preCICE   
 \item \myGre{Exchange} of variables
 \begin{itemize}
 \setlength\itemsep{1em}
