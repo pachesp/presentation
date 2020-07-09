@@ -15,6 +15,9 @@
 %% Folie: 2-zeilige Überschrift                    %%
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
+
+%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%
 \begin{frame}
     \shiftedframetitle{Content}
     
@@ -23,11 +26,9 @@
     \item Scope of this thesis\vspace{0.5cm}
     \item Tools\vspace{0.5cm}
     \item Current status\vspace{0.5cm}
-    \item TODOs
+    \item TO-DOs
     \end{enumerate}
 
-
-%And here are the references:~\cite{bianchi2005understanding}
 
 
 \end{frame}
@@ -38,52 +39,101 @@
 %%%%%%%%%%%%%%%%%%%%
 \begin{frame}
     \shiftedframetitle{Shallow Water Equations (SWE) model}
-    
+\vspace{-3mm}
+\begin{itemize}
+\item<2-> Starting with Navier-Stokes Equation for \textbf{incompressible inviscid} flow(\ref{ns}) and mass continuity law (\ref{cont})
+\begin{align}
+\frac{\partial u}{\partial t} + u\frac{\partial u}{\partial x} + v\frac{\partial u}{\partial y} + w\frac{\partial u}{\partial z} &= - \frac{\partial p}{\partial x} \nonumber \\ 
+\frac{\partial v}{\partial t} + u\frac{\partial v}{\partial x} + v\frac{\partial v}{\partial y} + w\frac{\partial v}{\partial z}&= - \frac{\partial p}{\partial y} \label{ns} \\ 
+\frac{\partial w}{\partial t} + u\frac{\partial w}{\partial x} + v\frac{\partial w}{\partial y} + w\frac{\partial w}{\partial z} &= - \frac{\partial p}{\partial z} + g \nonumber\\[0.3cm]
+\frac{\partial u}{\partial x} + \frac{\partial v}{\partial y} + \frac{\partial w}{\partial z} &= 0 \label{cont}
+\end{align}
+
+\item<3-> As first assumption, $L \ll H$, which from (\ref{cont}) it leads to $u,v\ll z$. Second assumption: \myBlu{vertical momentum exchange is negligible}. This leads to
+\begin{align}
+\frac{\partial u}{\partial t} + u\frac{\partial u}{\partial x} + u\frac{\partial v}{\partial y} + u\frac{\partial w}{\partial z} &= - \frac{\partial p}{\partial x} \nonumber \nonumber \\ 
+\frac{\partial v}{\partial t} + v\frac{\partial u}{\partial x} + v\frac{\partial v}{\partial y} + v\frac{\partial w}{\partial z}&= - \frac{\partial p}{\partial y} \nonumber \\ 
+\myBlu{0} &\myBlu{ = - \frac{\partial p}{\partial z} + g} \label{press}
+\end{align}
+which provides a \myBlu{solution for the pressure} as a function of the sea floor elevation and water level, see figure \ref{fig:swechem}.
+\end{itemize}
+\end{frame}
+\clearpage
+
+
+%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%
+\begin{frame}
+    \shiftedframetitle{Shallow Water Equations (SWE) model {\small(cont.)}}
+\vspace{-3mm}
+\begin{itemize}
+\item<1-> From (\ref{cont}), we can carry out a \myOra{depth-averaged integration} on the continuity equation, that is 
+\begin{align}
+\myOra{\int_a^b} (\frac{\partial u}{\partial x} + \frac{\partial v}{\partial y} + \myOra{\frac{\partial w}{\partial z}})\ \myOra{dz} &= 0 \nonumber \\[0.2cm]
+\myOra{\frac{\partial h}{\partial t}} + \frac{\partial hu}{\partial x} + \frac{\partial hv}{\partial y} &= 0
+\end{align}
+\item<2-> Lastly, from (\ref{ns}) and making use of \myRed{\textit{Leibnitz Integral Rule}, depth-average integration on the momentum equation}, some kinematic boundary conditions on the water surface \cite{depthAv}, and from (\ref{press}), we get the model for SWE
+\begin{align}
+\frac{\partial \myRed{hu}}{\partial t} + \frac{\partial}{\partial x}(\myRed{hu^2} + \myBlu{\frac{1}{2}\rho g h^2}) + \frac{\partial \myRed{huv}}{\partial y} &= \myBlu{- gh\frac{\partial b}{\partial x}} \\
+\frac{\partial \myRed{hv}}{\partial t} + \frac{\partial \myRed{huv}}{\partial x} + \frac{\partial}{\partial y}(\myRed{hv^2} + \myBlu{\frac{1}{2}\rho g h^2})&= \myBlu{- gh\frac{\partial b}{\partial y} }
+\end{align}
+\end{itemize}
+\end{frame}
+\clearpage
+
+%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%
+\begin{frame}
+    \shiftedframetitle{Shallow Water Equations (SWE) model {\small(final)}}
+\vspace{-2mm}
 \begin{multicols}{2}
 \begin{itemize}
-
-\item<2->[]
-\begin{itemize}
-\item derived from mass and momentum conservation laws, and depth averaging \dots %also derived by vertical averaging from the 3d incompressible ns eqs
-\vspace{5pt}
+\item[] SWE model can be represented in a matrix form \dots
+% derived from mass and momentum conservation laws, and depth averaging \dots %also derived by vertical averaging from the 3d incompressible ns eqs
 \begin{align*}
-\begin{bmatrix}[1.5]
+\vspace{-15pt}
+\begin{bmatrix}[1.3]
 h\\
 hu\\
 hv\\
 \end{bmatrix}_t \ + \ 
 \begin{bmatrix}[1.5]
-uh\\
+hu\\
 hu^2 + \frac{1}{2}gh^2\\
 huv\\
 \end{bmatrix}_x\ &+ \ 
-\begin{bmatrix}[1.5]
-vh\\
+\begin{bmatrix}[1.3]
+hv\\
 huv\\
 hv^2 + \frac{1}{2}gh^2\\
 \end{bmatrix}_y = 
-\begin{bmatrix}[1.5]
+\begin{bmatrix}[1.3]
 0\\
 -gh\frac{\partial b}{\partial x}\\
 -gh\frac{\partial b}{\partial y}
 \end{bmatrix}\\[1em]
 \frac{\partial q}{\partial t} + \dfrac{\partial F(q)}{\partial x} + &\frac{\partial G(q)}{\partial y} = S(q,x,y,t) 
 \end{align*}
-\vspace{1em}
-\item<3-> $ W \ll U,V $\\[0.5em]
-\item<4-> $3D\rightarrow 2D$ \\[0.5em]
-\item<5-> Applications: {\small Free surface flows, tsunamis prediction, atmospheric flows, \dots} \\[0.5em]
-\item<6-> hyperbolic PDE system $\rightarrow$ Riemann Problem and FVM
-\end{itemize}
-    \vfill\columnbreak
-    \vspace*{0.39cm}
-\item<1->[]
+\item[]
 \begin{figure}
-\includegraphics[width=\columnwidth, height=.4\textheight]{./Resources/Images/swe.png}%
+\includegraphics[scale=0.2]{./Resources/Images/swe.png}%
 \caption{SWE variables schematic \footnote{\url{https://www5.in.tum.de/SWE/lugano2013/swe_anatomy.pdf}}}
+\label{fig:swechem}
 \end{figure}
 \end{itemize}
+
+\vfill\columnbreak
+
+\begin{itemize}
+\setlength\itemsep{2em}
+\item<2->[] The \textbf{\myGre{Shallow Water Equations}} \dots
+\item<3-> \myGre{neglect vertical velocity};  $ W \ll U,V $, since horizontal distances $\gg$ vertical distance 
+\item<4-> simplify \myGre{$3D$} Navier-Stokes \myGre{to} a \myGre{$2D$} system of equations
+\item<5-> represent a \myGre{hyperbolic PDE} system $\rightarrow$ \myGre{Riemann} Problem and \myGre{FVM}
+\item<6-> Applications: {\small \myGre{Free surface} flows around structures, tsunamis prediction, atmospheric flows, \dots}
+\end{itemize}
 \end{multicols}
+
 \end{frame}
 \clearpage
 
@@ -99,8 +149,8 @@ hv^2 + \frac{1}{2}gh^2\\
  \hspace{0.35\columnwidth}{\large\textbf{Background}}
  \begin{itemize}
    \setlength\itemsep{2em}
-  \item  full description of \textit{shallowFOAM}  solver for 2D SWE \cite{mintgen}
- \item  coupling 2D SWE and 3D RANS solvers $\rightarrow$ development of \textit{shallowInterFOAM} \cite{mintgen}
+  \item  full description of \textit{shallowFOAM}  solver for $2D$ SWE \cite{mintgen}
+ \item  coupling $2D$ SWE and $3D$ RANS solvers $\rightarrow$ development of \textit{shallowInterFOAM} \cite{mintgen}
  \item BSc. Christiaan Osse\footnote{Thesis published during this thesis} implemented \cite{mintgen} with \textit{preCICE}
  \end{itemize}
     
@@ -111,21 +161,21 @@ hv^2 + \frac{1}{2}gh^2\\
  \begin{itemize}
     \setlength\itemsep{2em}
 
- \item<3-> Extend \cite{mintgen} coupling (2D $\Longleftrightarrow$ 3D) as a flexible approach to SWE solvers
- \item<4-> Test Case: 2D SWE solver \& OpenFOAM 
+ \item<3-> Extend \cite{mintgen} coupling ($2D$ $\Longleftrightarrow$ $3D$) as a flexible approach to SWE solvers
+ \item<4-> Test Case: $2D$ SWE solver \& OpenFOAM 
  \item<5-> Coupling \& Mapping data from/to all setups: \vspace{0.4cm}
 \begin{table}[]
 \begin{tabular}{|lll|}
 \hline
-2D SWE       & $\rightarrow$ & 2D SWE       \\ \hline
-2D SWE       & $\rightarrow$ & 3D OpenFOAM \\ \hline
-3D OpenFOAM & $\rightarrow$ & 2D SWE       \\ \hline
-3D OpenFOAM & $\rightarrow$ & 3D OpenFOAM \\ \hline
+$2D$ SWE       & $\rightarrow$ & $2D$ SWE       \\ \hline
+$2D$ SWE       & $\rightarrow$ & $3D$ OpenFOAM \\ \hline
+$3D$ OpenFOAM & $\rightarrow$ & $2D$ SWE       \\ \hline
+$3D$ OpenFOAM & $\rightarrow$ & $3D$ OpenFOAM \\ \hline
 \end{tabular}
 \caption{Mapping setups}
 \label{table:1}
 \end{table}
-\item<6-> \textbf{\textit{Extend preCICE adapter for handling 3D domains}}
+\item<6-> \textbf{\textit{Extend preCICE adapter for handling $3D$ domains}}
 \end{itemize}
 \end{itemize}
 \end{multicols}
@@ -152,7 +202,7 @@ hv^2 + \frac{1}{2}gh^2\\
 \item Modified Wave-Propagation Method $\rightarrow$ \textit{F-Wave} \cite{levequeArticle}
 \item Developed at SCCS\footnote{\url{https://github.com/TUM-I5/SWE}}
 \item Written in C++
-\item 2-D
+\item $2D$
 \end{itemize}
 
 \item<3->[]
@@ -162,7 +212,7 @@ hv^2 + \frac{1}{2}gh^2\\
  \setlength\itemsep{6pt}
 \item VoF (Volume of Fluid) method
 \item immiscible fluids (gas and liquid)
-\item 3-D
+\item $3D$
 \end{itemize}
 
 \vfill\columnbreak
@@ -195,10 +245,10 @@ hv^2 + \frac{1}{2}gh^2\\
 \begin{table}[]
 \begin{tabular}{ cl }
 {\large\textbf{Progress}} & {\large\hspace{5pt} \textbf{Implementation}}\\
-\includegraphics[scale=0.5]{./Resources/Images/bar1.png} & \hspace{5pt}Bidirectional 2D SWE $\leftrightarrow$ 2D SWE  \\ 
-\includegraphics[scale=0.5]{./Resources/Images/bar2.png} &\hspace{5pt} Unidirectional 2D SWE $\rightarrow$ 3D OF \\ 
-\includegraphics[scale=0.5]{./Resources/Images/bar2.png} &\hspace{5pt} Unidirectional 3D OF $\rightarrow$ 2D SWE \\ 
-\includegraphics[scale=0.5]{./Resources/Images/bar3.png} & \hspace{5pt} Bidirectional 3D OF $\leftrightarrow$ 3D OF \\
+\includegraphics[scale=0.5]{./Resources/Images/bar1.png} & \hspace{5pt}Bidirectional $2D$ SWE $\leftrightarrow$ $2D$ SWE  \\ 
+\includegraphics[scale=0.5]{./Resources/Images/bar2.png} &\hspace{5pt} Unidirectional $2D$ SWE $\rightarrow$ $3D$ OF \\ 
+\includegraphics[scale=0.5]{./Resources/Images/bar2.png} &\hspace{5pt} Unidirectional $3D$ OF $\rightarrow$ $2D$ SWE \\ 
+\includegraphics[scale=0.5]{./Resources/Images/bar3.png} & \hspace{5pt} Bidirectional $3D$ OF $\leftrightarrow$ $3D$ OF \\
 \end{tabular}
 
 \end{table}
@@ -221,9 +271,16 @@ hv^2 + \frac{1}{2}gh^2\\
 %%%%%%%%%%%%%%%%%%
 %%%%%%%%%%%%%%%%%%
 \begin{frame}
+\shiftedframetitle{Boundary Conditions}
+
+\end{frame}
+
+%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%
+\begin{frame}
 \shiftedframetitle{Current Status}
 \vspace{-0.5cm}
-{\large \hspace{3mm} 2D SWE - 2D SWE Unidirectional}\\
+{\large \hspace{3mm} $2D$ SWE - $2D$ SWE Unidirectional}\\
 Case: Radial dam break, no bathymetry
 \begin{textblock*}{1cm}(17cm,1pt) % {block width} (coords)
 %\begin{figure}
@@ -239,17 +296,17 @@ Case: Radial dam break, no bathymetry
 \includegraphics[width=.4\textwidth]{./Resources/Images/unidirectional_graph.png}
 
 \caption{Top right: $h(t=0)$. Left: $h(t=20)$ grad $=0$, Middle: $h(t=20)$ grad $\neq0$. Right: graphed values at the middle of the domain}
-\label{fig:figure3}
 \end{figure}
 
 \end{frame}
+
 
 %%%%%%%%%%%%%%%%%%
 %%%%%%%%%%%%%%%%%%
 \begin{frame}
 \shiftedframetitle{Current Status}
 \vspace{-0.5cm}
-{\large \hspace{3mm} 2D SWE - 2D SWE Bidirectional}\\
+{\large \hspace{3mm} $2D$ SWE - $2D$ SWE Bidirectional}\\
 Case: Radial dam break, no bathymetry
 \begin{textblock*}{1cm}(17cm,1pt) % {block width} (coords)
 %\begin{figure}
@@ -264,7 +321,6 @@ Case: Radial dam break, no bathymetry
 \includegraphics[width=.25\textwidth]{./Resources/Images/bidirectional20_g_bueno.png}\hfill
 \includegraphics[width=.4\textwidth]{./Resources/Images/bidirectional_graph.png}
 \caption{Top right: $h(t=0)$. Left: $h(t=20)$ grad $=0$, Middle: $h(t=20)$ grad $\neq0$. Right: graphed values at the middle of the domain}
-\label{fig:figure3}
 \end{figure}
 
 \end{frame}
@@ -300,7 +356,7 @@ Case: Radial dam break, no bathymetry
 %%%%%%%%%%%%%%%%%%
 %%%%%%%%%%%%%%%%%%
 \begin{frame}
-\shiftedframetitle{TODOs}
+\shiftedframetitle{TO-DOs}
 
 \begin{figure}
 \includegraphics[scale=0.5]{./Resources/Images/mapping23.png}%
@@ -312,11 +368,11 @@ Case: Radial dam break, no bathymetry
 %%%%%%%%%%%%%%%%%%
 %%%%%%%%%%%%%%%%%%
 \begin{frame}
-\shiftedframetitle{TODOs}
+\shiftedframetitle{TO-DOs}
 
 \begin{figure}
 \includegraphics[scale=0.5]{./Resources/Images/mapping32.png}%
-\caption{mapping 3D to 2D}
+\caption{mapping $3D$ to $2D$}
 \end{figure}
 
 \end{frame}
