@@ -26,7 +26,7 @@
     \item Scope of this thesis\vspace{0.5cm}
     \item Tools\vspace{0.5cm}
     \item Current status\vspace{0.5cm}
-    \item TO-DOs
+    \item Next steps
     \end{enumerate}
 
 
@@ -41,21 +41,14 @@
     \shiftedframetitle{Shallow Water Equations (SWE) model}
 \vspace{-3mm}
 \begin{itemize}
-\item<2-> Starting with Navier-Stokes Equation for \textbf{incompressible inviscid} flow(\ref{ns}) and \textbf{mass continuity law}(\ref{cont})
+\item<2-> Starting with $3D$ Navier-Stokes Equations for \textbf{incompressible inviscid} flow (\ref{ns}) and \textbf{mass continuity law} (\ref{cont})
+\vspace{0.5cm}
 \begin{align}
-\frac{\partial u}{\partial t} + u\frac{\partial u}{\partial x} + v\frac{\partial u}{\partial y} + w\frac{\partial u}{\partial z} &= - \frac{\partial p}{\partial x} \nonumber \\ 
-\frac{\partial v}{\partial t} + u\frac{\partial v}{\partial x} + v\frac{\partial v}{\partial y} + w\frac{\partial v}{\partial z}&= - \frac{\partial p}{\partial y} \label{ns} \\ 
-\frac{\partial w}{\partial t} + u\frac{\partial w}{\partial x} + v\frac{\partial w}{\partial y} + w\frac{\partial w}{\partial z} &= - \frac{\partial p}{\partial z} + g \nonumber\\[0.3cm]
+\frac{\partial u}{\partial t} + u\frac{\partial u}{\partial x} + v\frac{\partial u}{\partial y} + w\frac{\partial u}{\partial z} &= - \frac{\partial p}{\partial x} \nonumber \\[0.8cm] 
+\frac{\partial v}{\partial t} + u\frac{\partial v}{\partial x} + v\frac{\partial v}{\partial y} + w\frac{\partial v}{\partial z}&= - \frac{\partial p}{\partial y} \label{ns} \\[0.8cm]
+\frac{\partial w}{\partial t} + u\frac{\partial w}{\partial x} + v\frac{\partial w}{\partial y} + w\frac{\partial w}{\partial z} &= - \frac{\partial p}{\partial z} + g \nonumber\\[1.5cm]
 \frac{\partial u}{\partial x} + \frac{\partial v}{\partial y} + \frac{\partial w}{\partial z} &= 0 \label{cont}
 \end{align}
-
-\item<3-> \underline{First assumption}: $L \gg H$, which from (\ref{cont}) it leads to $u,v\gg w$. \underline{Second assumption}: \myBlu{vertical momentum exchange is negligible}. This leads to
-\begin{align}
-\frac{\partial u}{\partial t} + u\frac{\partial u}{\partial x} + u\frac{\partial v}{\partial y} + u\frac{\partial w}{\partial z} &= - \frac{\partial p}{\partial x} \nonumber \nonumber \\ 
-\frac{\partial v}{\partial t} + v\frac{\partial u}{\partial x} + v\frac{\partial v}{\partial y} + v\frac{\partial w}{\partial z}&= - \frac{\partial p}{\partial y} \nonumber \\ 
-\myBlu{0} &\myBlu{ = - \frac{\partial p}{\partial z} + g} \label{press}
-\end{align}
-which provides a \myBlu{solution for the pressure} as a function of the sea floor elevation and water level, {\tiny see figure \ref{fig:swechem}}.
 \end{itemize}
 \end{frame}
 \clearpage
@@ -67,15 +60,37 @@ which provides a \myBlu{solution for the pressure} as a function of the sea floo
     \shiftedframetitle{Shallow Water Equations (SWE) model {\small(cont.)}}
 \vspace{-3mm}
 \begin{itemize}
-\item<1-> From (\ref{cont}), we can carry out a \myOra{depth-averaged integration} on the \myOra{continuity equation}, that is 
+\setlength\itemsep{2em}
+\item<1-> \textbf{First assumption}: $L \gg H$, which from (\ref{cont}) it leads to $u,v\gg w$.
+\item<2-> \textbf{Second assumption}: \myDarkBlue{vertical momentum exchange} is \myDarkBlue{negligible}. Then, the NS equation on the \myDarkBlue{vertical component} modifies to
 \begin{align}
-\myOra{\int_a^b} (\frac{\partial u}{\partial x} + \frac{\partial v}{\partial y} + \myOra{\frac{\partial w}{\partial z}})\ \myOra{dz} &= 0 \nonumber \\[0.2cm]
-\myOra{\frac{\partial h}{\partial t}} + \frac{\partial hu}{\partial x} + \frac{\partial hv}{\partial y} &= 0
+\color{darkblue}\underbrace{\color{black}\frac{\partial w}{\partial t} + u\frac{\partial w}{\partial x} + v\frac{\partial w}{\partial y} + w\frac{\partial w}{\partial z}}_{\myDarkBlue{0}} = - \frac{\partial p}{\partial z} + g \nonumber\\[0.5cm]
+\myDarkBlue{0} \myDarkBlue{= - \frac{\partial p}{\partial z} + g} \label{press}
 \end{align}
-\item<2-> Lastly, from (\ref{ns}) and making use of \myRed{\textit{Leibnitz Integral Rule}, depth-averaged integration} on the \myRed{momentum equation}, some kinematic boundary conditions on the water surface \cite{depthAv}, and from (\ref{press}), we get the model for SWE
+\item<3->
+This provides a \myDarkBlue{solution for the pressure} as a function of the sea floor elevation and water level {\tiny see figure \ref{fig:swechem} on next slides}.
+\end{itemize}
+\end{frame}
+\clearpage
+
+
+
+%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%
+\begin{frame}
+    \shiftedframetitle{Shallow Water Equations (SWE) model {\small(cont.)}}
+\vspace{-3mm}
+\begin{itemize}
+\item<1-> \myOrange{Depth-averaged integration} on the continuity equation, that is 
 \begin{align}
-\frac{\partial \myRed{hu}}{\partial t} + \frac{\partial}{\partial x}(\myRed{hu^2} + \myBlu{\frac{1}{2}\rho g h^2}) + \frac{\partial \myRed{huv}}{\partial y} &= \myBlu{- gh\frac{\partial b}{\partial x}} \\
-\frac{\partial \myRed{hv}}{\partial t} + \frac{\partial \myRed{huv}}{\partial x} + \frac{\partial}{\partial y}(\myRed{hv^2} + \myBlu{\frac{1}{2}\rho g h^2})&= \myBlu{- gh\frac{\partial b}{\partial y} }
+\myOrange{\int_{b_0}^{b_0 + h }} (\frac{\partial u}{\partial x} + \frac{\partial v}{\partial y} + \myOrange{\frac{\partial w}{\partial z}})\ \myOrange{dz} &= 0 \nonumber \\[0.8cm]
+\myOrange{\frac{\partial h}{\partial t}} + \frac{\partial \myOrange{h}u}{\partial x} + \frac{\partial \myOrange{h}v}{\partial y} &= 0 
+\end{align}
+\vspace{0.5cm}
+\item<2->\myCRed{\textit{Leibnitz Integral Rule}} $+$ \myCRed{depth-averaged integration} on the momentum equation $+$ kinematic \myCRed{BCs} on  water surface \cite{depthAv}, $+$ \myDarkBlue{(\ref{press})}, we get the model for SWE
+\begin{align}
+\frac{\partial \myCRed{hu}}{\partial t} + \frac{\partial}{\partial x}(\myCRed{hu^2} + \myDarkBlue{\frac{1}{2}\rho g h^2}) + \frac{\partial \myCRed{huv}}{\partial y} &= \myDarkBlue{- gh\frac{\partial b}{\partial x}} \\[0.8cm]
+\frac{\partial \myCRed{hv}}{\partial t} + \frac{\partial \myCRed{huv}}{\partial x} + \frac{\partial}{\partial y}(\myCRed{hv^2} + \myDarkBlue{\frac{1}{2}\rho g h^2})&= \myDarkBlue{- gh\frac{\partial b}{\partial y} }
 \end{align}
 \end{itemize}
 \end{frame}
@@ -84,7 +99,7 @@ which provides a \myBlu{solution for the pressure} as a function of the sea floo
 %%%%%%%%%%%%%%%%%%%%
 %%%%%%%%%%%%%%%%%%%%
 \begin{frame}
-    \shiftedframetitle{Shallow Water Equations (SWE) model {\small(final)}}
+    \shiftedframetitle{Shallow Water Equations (SWE) model {\small(cont)}}
 \vspace{-2mm}
 \begin{multicols}{2}
 \begin{itemize}
@@ -93,9 +108,9 @@ which provides a \myBlu{solution for the pressure} as a function of the sea floo
 \begin{align*}
 \vspace{-15pt}
 \begin{bmatrix}[1.3]
-h\\
-hu\\
-hv\\
+\myDarkBlue{h}\\
+\myDarkBlue{hu}\\
+\myDarkBlue{hv}\\
 \end{bmatrix}_t \ + \ 
 \begin{bmatrix}[1.0]
 hu\\
@@ -109,35 +124,50 @@ hv^2 + \frac{1}{2}gh^2\\
 \end{bmatrix}_y = 
 \begin{bmatrix}[1.0]
 0\\
--ghb_x\\
--ghb_y
-\end{bmatrix}\\[2em]
-\frac{\partial q}{\partial t} + \dfrac{\partial F(q)}{\partial x} + &\frac{\partial G(q)}{\partial y} = S(q,x,y,t) 
+-gh\ b_x\\
+-gh\ b_y
+\end{bmatrix}\\[3em]
+\frac{\partial \bar{q}}{\partial t} + \dfrac{\partial \bar{F}(q)}{\partial x} + &\frac{\partial \bar{G}(q)}{\partial y} = S(h,x,y,t) \\[3em]
+\bar{q} = \begin{bmatrix}[1.3]
+\myDarkBlue{h}\\
+\myDarkBlue{hu}\\
+\myDarkBlue{hv}\\
+\end{bmatrix} = 
+\begin{matrix}[1.3]
+\text{\myDarkBlue{\textit{height}}}\\
+\text{\myDarkBlue{\textit{dicharge in x}}} \\
+\text{\myDarkBlue{\textit{discharge in y}}}
+\end{matrix} 
 \end{align*}
-\vspace{5pt}
-\item[]
-\begin{figure}
-\includegraphics[scale=0.2]{./Resources/Images/swe.png}%
-\caption{SWE variables schematic \footnote{\url{https://www5.in.tum.de/SWE/lugano2013/swe_anatomy.pdf}}}
-\label{fig:swechem}
-\end{figure}
 \end{itemize}
 
 \vfill\columnbreak
-
-\begin{itemize}
-\setlength\itemsep{2em}
-\item<2->[] The \textbf{\myGre{Shallow Water Equations}} \dots
-\item<3-> \myGre{neglect vertical velocity};  $ W \ll U,V $, since horizontal distances $L$ $\gg$ vertical distance $H$
-\item<4-> provides a \myGre{solution} for the \myGre{pressure}
-\item<5-> simplify \myGre{$3D$} Navier-Stokes \myGre{to} a \myGre{$2D$} system of equations
-\item<6-> represent a \myGre{hyperbolic PDE} system $\rightarrow$ \myGre{Riemann} Problem and \myGre{FVM}
-\item<7-> Applications: {\small \myGre{Free surface} flows around structures, tsunamis prediction, atmospheric flows, \dots}
-\end{itemize}
+\vspace*{0.4cm}
+\begin{figure}
+\includegraphics[scale=0.25]{./Resources/Images/swe.png}%
+\caption{SWE variables schematic \footnote{\url{https://www5.in.tum.de/SWE/lugano2013/swe_anatomy.pdf}}}
+\label{fig:swechem}
+\end{figure}
 \end{multicols}
-
 \end{frame}
 \clearpage
+
+%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%
+\begin{frame}
+    \shiftedframetitle{Shallow Water Equations (SWE) model {\small(final)}}
+\begin{itemize}
+\setlength\itemsep{2em}
+\item<1->[] The \textbf{\myGreen{Shallow Water Equations}} \dots
+\item<2-> \myGreen{neglect vertical velocity};  $ W \ll U,V $, since horizontal distances $L$ $\gg$ vertical distance $H$
+\item<3-> provide a \myGreen{solution} for the \myGreen{pressure}
+\item<4-> simplify \myGreen{$3D$} Navier-Stokes \myGreen{to} a \myGreen{$2D$} system of equations
+\item<5-> represent a \myGreen{hyperbolic PDE} system $\rightarrow$ \myGreen{Riemann} Problem and \myGreen{FVM}
+\item<6-> Applications: {\small \myGreen{Free surface} flows around structures, tsunamis prediction, atmospheric flows, \dots}
+\end{itemize}
+\end{frame}
+\clearpage
+
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%
 %%%%%%%%%%%%%%%%%%%%%%%%%%
@@ -152,9 +182,9 @@ hv^2 + \frac{1}{2}gh^2\\
  \vspace{3em}
  \begin{itemize}
   \setlength\itemsep{2em}
-  \item  full description of \myBlu{\textit{shallowFOAM}}  solver for \myBlu{$2D$} SWE \cite{mintgen}
- \item  \myBlu{coupling $2D$} SWE and \myBlu{$3D$} RANS solvers $\rightarrow$ development of \textit{shallowInterFOAM} \cite{mintgen}
- \item B.Sc. Christiaan Osse implemented \cite{mintgen} with \myBlu{\textit{preCICE}}
+  \item  full description of \myDarkBlue{\textit{shallowFOAM}}  solver for \myDarkBlue{$2D$} SWE \cite{mintgen}
+ \item  \myDarkBlue{coupling $2D$} SWE and \myDarkBlue{$3D$} RANS solvers $\rightarrow$ development of \textit{shallowInterFOAM} \cite{mintgen}
+ \item B.Sc. Christiaan Osse implemented \cite{mintgen} with \myDarkBlue{\textit{preCICE}}
  \end{itemize}
     
 \vfill\columnbreak
@@ -165,7 +195,7 @@ hv^2 + \frac{1}{2}gh^2\\
  \begin{itemize}
     \setlength\itemsep{2em}
 
- \item<4-> \myCRed{Extend} \cite{mintgen} coupling ($2D$ $\Longleftrightarrow$ $3D$) as a \myCRed{flexible} approach to SWE solvers
+ \item<4-> \myCRed{Extend} \cite{mintgen} coupling ($2D$ $\leftrightarrow$ $3D$) as a \myCRed{flexible} approach to SWE solvers
  \item<5-> Test Case: $2D$ SWE solver \& OpenFOAM 
  \item<6-> \myCRed{Coupling} \& \myCRed{Mapping} data from/to all setups: \vspace{0.4cm}
 \begin{table}[]
@@ -178,7 +208,7 @@ $3D$ OpenFOAM & $\rightarrow$ & $3D$ OpenFOAM \\ \hline
 \caption{Mapping setups}
 \label{table:1}
 \end{table}
-\item<7-> \textbf{\textit{\myCRed{Extend preCICE} adapter for handling $2D\Longleftrightarrow3D$ domains}}
+\item<7-> \textbf{\textit{\myCRed{Extend preCICE} adapter for handling $2D\leftrightarrow3D$ domains}}
 \end{itemize}
 \end{itemize}
 \end{multicols}
@@ -202,30 +232,31 @@ $3D$ OpenFOAM & $\rightarrow$ & $3D$ OpenFOAM \\ \hline
 \begin{itemize}
 \vspace{5pt}
  \setlength\itemsep{6pt}
-\item Modified Wave-Propagation Method $\rightarrow$ \myRed{\textit{F-Wave}} \cite{levequeArticle}
+\item Modified Wave-Propagation Method $\rightarrow$ \myCRed{\textit{F-Wave}} \cite{levequeArticle}
 \item Developed at SCCS\footnote{\url{https://github.com/TUM-I5/SWE}}
-\item Written in \myRed{C++}
-\item \myRed{$2D$}
+\item Written in \myCRed{C++}
+\item \myCRed{$2D$}
 \end{itemize}
 
 \item<3->[]
-\textbf{\textit{interFOAM}\footnote{\url{https://openfoamwiki.net/index.php/InterFoam}} - {\small OpenFoam Multiphase Navier-Stokes Solver}}
+\textbf{\textit{interFOAM}\footnote{\url{https://openfoamwiki.net/index.php/InterFoam}} - {\small OpenFOAM Multiphase Navier-Stokes Solver}}
 \begin{itemize}
 \vspace{5pt}
  \setlength\itemsep{6pt}
-\item \myRed{VoF} (Volume of Fluid) method $\rightarrow$ phase-fraction interphase approach \myRed{$\rho=\alpha\rho_1 + (1-\alpha)\rho_2$} 
+\item \myCRed{VoF} (Volume of Fluid) method $\rightarrow$ phase-fraction interphase approach \myCRed{$\rho=\alpha\rho_1 + (1-\alpha)\rho_2$} 
 \item immiscible fluids (2-Phase)
-\item \myRed{$3D$}
+\item \myCRed{$3D$}
 \end{itemize}
 
 \vfill\columnbreak
 \item<4->[]
-\textbf{preCICE\footnote{\url{https://github.com/precice}} - \small{Open Source coupling library for partitioned multi-physics simulations}}
+\textbf{preCICE\footnote{\url{https://github.com/precice}} - \small{Coupling library for partitioned multi-physics simulations}}
 \begin{itemize}
 \vspace{5pt}
 \item coupling \& mapping {\tiny (see table \ref{table:1})}
 \begin{itemize}
-\item[] two domains on \myRed{\textit{same} or \textit{different}} dimensions/solvers
+\item[] multi-physics \myCRed{partitioned} problems
+%\item[] two domains on \textit{same} or \textit{different} dimensions/solvers
 \end{itemize}
 \end{itemize}
 \end{itemize}
@@ -260,7 +291,7 @@ $3D$ OpenFOAM & $\rightarrow$ & $3D$ OpenFOAM \\ \hline
 
 \item<2->[] \hspace{0.35\columnwidth}{\Large\textbf{Challenges}}\\[2cm]
 \item<3->[] \hspace{0.23\columnwidth} map $h, p$ between models\\[1cm]
-\item<4->[] {\Large\hspace{0.23\columnwidth}Boundary Conditions!!}
+\item<4->[] {\Large\hspace{0.23\columnwidth}Boundary Conditions}
 \begin{itemize}
  \setlength{\itemindent}{3.5cm}
 \vspace{0.2cm}
@@ -274,6 +305,7 @@ $3D$ OpenFOAM & $\rightarrow$ & $3D$ OpenFOAM \\ \hline
 %%%%%%%%%%%%%%%%%%
 %%%%%%%%%%%%%%%%%%
 \begin{frame}
+%TODO improve this slide
 \shiftedframetitle{Boundary Conditions}
 \begin{figure}
 \includegraphics[scale=0.44]{./Resources/Images/bcs_mintgen.png}
@@ -286,7 +318,7 @@ $3D$ OpenFOAM & $\rightarrow$ & $3D$ OpenFOAM \\ \hline
 \begin{frame}
 \shiftedframetitle{Current Status}
 \vspace{-0.5cm}
-{\large $2D$ SWE - $2D$ SWE \textbf{\myBlu{Unidirectional}}}\\
+{\large $2D$ SWE - $2D$ SWE \textbf{\myDarkBlue{Unidirectional}}}\\
 Case: Radial dam break, no bathymetry
 \begin{textblock*}{1cm}(17cm,1pt) % {block width} (coords)
 %\begin{figure}
@@ -312,7 +344,7 @@ Case: Radial dam break, no bathymetry
 \begin{frame}
 \shiftedframetitle{Current Status}
 \vspace{-0.5cm}
-{\large $2D$ SWE - $2D$ SWE \textbf{\myBlu{Bidirectional}}}\\
+{\large $2D$ SWE - $2D$ SWE \textbf{\myDarkBlue{Bidirectional}}}\\
 Case: Radial dam break, no bathymetry
 \begin{textblock*}{1cm}(17cm,1pt) % {block width} (coords)
 %\begin{figure}
@@ -335,22 +367,22 @@ Case: Radial dam break, no bathymetry
 %%%%%%%%%%%%%%%%%%
 %%%%%%%%%%%%%%%%%%
 \begin{frame}
-\shiftedframetitle{TO-DOs}
+\shiftedframetitle{Next steps}
 \vspace{-2mm}
 {\large Unidirectional Cases}\\
 \begin{multicols}{2}
 \begin{itemize}
 \setlength\itemsep{2em}
-\item \myGre{2D SWE} domain $\Longleftrightarrow$ \myGre{3D interFOAM } domain 
-\item fit \myGre{Fluid-Fluid adapter} preCICE   
-\item \myGre{Exchange} of variables
+\item \myGreen{2D SWE} domain $\leftrightarrow$ \myGreen{3D interFOAM } domain 
+\item fit \myGreen{Fluid-Fluid adapter} preCICE   
+\item \myGreen{Exchange} of variables
 \begin{itemize}
 \setlength\itemsep{1em}
 \vspace{5pt}
 \item discharges $hu, hv$
 \item height $h$
 \item volume indicator $\alpha$
-\item \myGre{BCs} $->$ Dirchlet? Neumann? Robin?
+\item \myGreen{BCs} $->$ Dirchlet? Neumann? Robin?
 \end{itemize}
 \end{itemize}
 
@@ -373,22 +405,22 @@ Case: Radial dam break, no bathymetry
 %%%%%%%%%%%%%%%%%%
 %%%%%%%%%%%%%%%%%%
 \begin{frame}
-\shiftedframetitle{TO-DOs}
+\shiftedframetitle{Next steps}
 \vspace{-2mm}
 {\large Bidirectional $3D$}\\
 \begin{multicols}{2}
 \begin{itemize}
 \setlength\itemsep{2em}
-\item 3D interFOAM  \textit{left} $\Longleftrightarrow$ \textit{right} domains
-\item fit \myGre{Fluid-Fluid adapter} preCICE   
-\item \myGre{Exchange} of variables
+\item 3D interFOAM  \textit{left} $\leftrightarrow$ \textit{right} domains
+\item fit \myGreen{Fluid-Fluid adapter} preCICE   
+\item \myGreen{Exchange} of variables
 \begin{itemize}
 \setlength\itemsep{1em}
 \vspace{5pt}
 \item discharges $hu, hv$
 \item height $h$
 \item volume indicator $\alpha$
-\item \myGre{BCs} $->$ Dirchlet? Neumann? Robin?
+\item \myGreen{BCs} $->$ Dirchlet? Neumann? Robin?
 \end{itemize}
 \end{itemize}
 
