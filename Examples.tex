@@ -20,7 +20,7 @@
 %%%%%%%%%%%%%%%%%%%%
 \begin{frame}
     \shiftedframetitle{Content}
-    
+
     \begin{enumerate}
     \item Shallow Water Equations model \vspace{0.5cm}
     \item Scope of this thesis\vspace{0.5cm}
@@ -41,10 +41,10 @@
     \shiftedframetitle{Shallow Water Equations (SWE) model}
 \vspace{-3mm}
 \begin{itemize}
-\item<2-> Starting with $3D$ Navier-Stokes Equations for \textbf{incompressible inviscid} flow (\ref{ns}) and \textbf{mass continuity law} (\ref{cont})
+\item<2-> $3D$ Navier-Stokes Equations for \textbf{incompressible inviscid} flow (\ref{ns}) and \textbf{mass continuity law} (\ref{cont})
 \vspace{0.5cm}
 \begin{align}
-\frac{\partial u}{\partial t} + u\frac{\partial u}{\partial x} + v\frac{\partial u}{\partial y} + w\frac{\partial u}{\partial z} &= - \frac{\partial p}{\partial x} \nonumber \\[0.8cm] 
+\frac{\partial u}{\partial t} + u\frac{\partial u}{\partial x} + v\frac{\partial u}{\partial y} + w\frac{\partial u}{\partial z} &= - \frac{\partial p}{\partial x} \nonumber \\[0.8cm]
 \frac{\partial v}{\partial t} + u\frac{\partial v}{\partial x} + v\frac{\partial v}{\partial y} + w\frac{\partial v}{\partial z}&= - \frac{\partial p}{\partial y} \label{ns} \\[0.8cm]
 \frac{\partial w}{\partial t} + u\frac{\partial w}{\partial x} + v\frac{\partial w}{\partial y} + w\frac{\partial w}{\partial z} &= - \frac{\partial p}{\partial z} + g \nonumber\\[1.5cm]
 \frac{\partial u}{\partial x} + \frac{\partial v}{\partial y} + \frac{\partial w}{\partial z} &= 0 \label{cont}
@@ -61,14 +61,19 @@
 \vspace{-3mm}
 \begin{itemize}
 \setlength\itemsep{2em}
-\item<1-> \textbf{First assumption}: $L \gg H$, which from (\ref{cont}) it leads to $u,v\gg w$.
-\item<2-> \textbf{Second assumption}: \myDarkBlue{vertical momentum exchange} is \myDarkBlue{negligible}. Then, the NS equation on the \myDarkBlue{vertical component} modifies to
+\item<1-> \textbf{First assumption}: $L \gg H$, from mass continuity (\ref{cont})
+\begin{align*}
+\color{TUMOrange}\underbrace{\color{black}\frac{\partial u}{\partial x} + \frac{\partial v}{\partial y}}_{\approx \frac{2U}{L}} \color{black} + \color{TUMOrange}\underbrace{\color{black}\frac{\partial w}{\partial z}}_{\myTUMorange{\approx \frac{W}{H}}} &= 0
+\end{align*}
+
+leading to \myTUMorange{$u,v\gg w$}
+\item<2-> \textbf{Second assumption}: \myTUMdarkblue{vertical momentum exchange} is \myTUMdarkblue{negligible}. Then, NS equation \myTUMdarkblue{vertical component} modifies to
 \begin{align}
-\color{darkblue}\underbrace{\color{black}\frac{\partial w}{\partial t} + u\frac{\partial w}{\partial x} + v\frac{\partial w}{\partial y} + w\frac{\partial w}{\partial z}}_{\myDarkBlue{0}} = - \frac{\partial p}{\partial z} + g \nonumber\\[0.5cm]
-\myDarkBlue{0} \myDarkBlue{= - \frac{\partial p}{\partial z} + g} \label{press}
+\color{TUMDarkBlue}\underbrace{\color{black}\frac{\partial w}{\partial t} + u\frac{\partial w}{\partial x} + v\frac{\partial w}{\partial y} + w\frac{\partial w}{\partial z}}_{\myTUMdarkblue{0}}  \color{black} = - \frac{\partial p}{\partial z} + g \nonumber\\[0.5cm]
+\myTUMdarkblue{0} \myTUMdarkblue{= - \frac{\partial p}{\partial z} + g} \label{press}
 \end{align}
-\item<3->
-This provides a \myDarkBlue{solution for the pressure} as a function of the sea floor elevation and water level {\tiny see figure \ref{fig:swechem} on next slides}.
+\item<3->[]
+This provides a \myTUMdarkblue{solution for the pressure} as a function of the sea floor elevation and water level
 \end{itemize}
 \end{frame}
 \clearpage
@@ -81,16 +86,16 @@ This provides a \myDarkBlue{solution for the pressure} as a function of the sea 
     \shiftedframetitle{Shallow Water Equations (SWE) model {\small(cont.)}}
 \vspace{-3mm}
 \begin{itemize}
-\item<1-> \myOrange{Depth-averaged integration} on the continuity equation, that is 
+\item<1-> \myTUMorange{Depth-averaged integration} on the continuity equation \ref{cont}
 \begin{align}
-\myOrange{\int_{b_0}^{b_0 + h }} (\frac{\partial u}{\partial x} + \frac{\partial v}{\partial y} + \myOrange{\frac{\partial w}{\partial z}})\ \myOrange{dz} &= 0 \nonumber \\[0.8cm]
-\myOrange{\frac{\partial h}{\partial t}} + \frac{\partial \myOrange{h}u}{\partial x} + \frac{\partial \myOrange{h}v}{\partial y} &= 0 
+\myTUMorange{\int_{b_0}^{b_0 + h }} (\frac{\partial u}{\partial x} + \frac{\partial v}{\partial y} + \myTUMorange{\frac{\partial w}{\partial z}})\ \myTUMorange{dz} &= 0 \nonumber \\[0.8cm]
+\myTUMorange{\frac{\partial h}{\partial t}} + \frac{\partial \myTUMorange{h}u}{\partial x} + \frac{\partial \myTUMorange{h}v}{\partial y} &= 0
 \end{align}
 \vspace{0.5cm}
-\item<2->\myCRed{\textit{Leibnitz Integral Rule}} $+$ \myCRed{depth-averaged integration} on the momentum equation $+$ kinematic \myCRed{BCs} on  water surface \cite{depthAv}, $+$ \myDarkBlue{(\ref{press})}, we get the model for SWE
+\item<2->\myCRed{\textit{Leibnitz Integral Rule}} $+$ \myCRed{depth-averaged integration} on the momentum equation $+$ kinematic \myCRed{BCs} on surface \cite{depthAv} $+$ \myTUMdarkblue{(\ref{press})}
 \begin{align}
-\frac{\partial \myCRed{hu}}{\partial t} + \frac{\partial}{\partial x}(\myCRed{hu^2} + \myDarkBlue{\frac{1}{2}\rho g h^2}) + \frac{\partial \myCRed{huv}}{\partial y} &= \myDarkBlue{- gh\frac{\partial b}{\partial x}} \\[0.8cm]
-\frac{\partial \myCRed{hv}}{\partial t} + \frac{\partial \myCRed{huv}}{\partial x} + \frac{\partial}{\partial y}(\myCRed{hv^2} + \myDarkBlue{\frac{1}{2}\rho g h^2})&= \myDarkBlue{- gh\frac{\partial b}{\partial y} }
+\frac{\partial \myCRed{hu}}{\partial t} + \frac{\partial}{\partial x}(\myCRed{hu^2} + \myTUMdarkblue{\frac{1}{2}\rho g h^2}) + \frac{\partial \myCRed{huv}}{\partial y} &= \myTUMdarkblue{- gh\frac{\partial b}{\partial x}} \\[0.8cm]
+\frac{\partial \myCRed{hv}}{\partial t} + \frac{\partial \myCRed{huv}}{\partial x} + \frac{\partial}{\partial y}(\myCRed{hv^2} + \myTUMdarkblue{\frac{1}{2}\rho g h^2})&= \myTUMdarkblue{- gh\frac{\partial b}{\partial y} }
 \end{align}
 \end{itemize}
 \end{frame}
@@ -101,56 +106,136 @@ This provides a \myDarkBlue{solution for the pressure} as a function of the sea 
 \begin{frame}
     \shiftedframetitle{Shallow Water Equations (SWE) model {\small(cont)}}
 \vspace{-2mm}
-\begin{multicols}{2}
+
+\begin{columns}
+\begin{column}{0.4\textwidth}
 \begin{itemize}
-\item[] SWE model can be represented in a matrix form \dots
+\item<1->[] SWE model can be represented in a {\color{TUMBlauDunkel}matrix} form \dots
 % derived from mass and momentum conservation laws, and depth averaging \dots %also derived by vertical averaging from the 3d incompressible ns eqs
+\item<2->[]
 \begin{align*}
 \vspace{-15pt}
 \begin{bmatrix}[1.3]
-\myDarkBlue{h}\\
-\myDarkBlue{hu}\\
-\myDarkBlue{hv}\\
-\end{bmatrix}_t \ + \ 
+\myTUMdarkblue{h}\\
+\myTUMdarkblue{hu}\\
+\myTUMdarkblue{hv}\\
+\end{bmatrix}_t \ + \
 \begin{bmatrix}[1.0]
 hu\\
 hu^2 + \frac{1}{2}gh^2\\
 huv\\
-\end{bmatrix}_x\ &+ \ 
+\end{bmatrix}_x\ &+ \
 \begin{bmatrix}[1.0]
 hv\\
 huv\\
 hv^2 + \frac{1}{2}gh^2\\
-\end{bmatrix}_y = 
+\end{bmatrix}_y =
 \begin{bmatrix}[1.0]
 0\\
 -gh\ b_x\\
 -gh\ b_y
-\end{bmatrix}\\[3em]
-\frac{\partial \bar{q}}{\partial t} + \dfrac{\partial \bar{F}(q)}{\partial x} + &\frac{\partial \bar{G}(q)}{\partial y} = S(h,x,y,t) \\[3em]
-\bar{q} = \begin{bmatrix}[1.3]
-\myDarkBlue{h}\\
-\myDarkBlue{hu}\\
-\myDarkBlue{hv}\\
-\end{bmatrix} = 
-\begin{matrix}[1.3]
-\text{\myDarkBlue{\textit{height}}}\\
-\text{\myDarkBlue{\textit{dicharge in x}}} \\
-\text{\myDarkBlue{\textit{discharge in y}}}
-\end{matrix} 
+\end{bmatrix}\\[2em]
+\bar{q} = &\begin{bmatrix}[1.3]
+\myTUMdarkblue{h}\\
+\myTUMdarkblue{hu}\\
+\myTUMdarkblue{hv}
+\end{bmatrix}
+\begin{matrix}[1.0]
+\text{\hspace{-3em}\myTUMdarkblue{$\rightarrow\ $\textit{height}}}\\
+\text{\hspace{-2pt}\myTUMdarkblue{$\rightarrow\ $\textit{dicharge in x}}} \\
+\text{\hspace{5pt}\myTUMdarkblue{$\rightarrow\ $\textit{discharge in y}}}
+\end{matrix}
+\end{align*}
+\vspace{2pt}
+\item<4->[]
+\begin{align*}
+\qquad \qquad \frac{\partial \bar{q}}{\partial t} + \dfrac{\partial \bar{F}(q)}{\partial x} + &\frac{\partial \bar{G}(q)}{\partial y} = S(h,x,y,t)
 \end{align*}
 \end{itemize}
 
-\vfill\columnbreak
-\vspace*{0.4cm}
+\end{column}
+\begin{column}{0.6\textwidth}  %%<--- here
+\begin{itemize}[leftmargin=*]
+\item<3->[]
+\vspace{2cm}
+\begin{center}
 \begin{figure}
-\includegraphics[scale=0.25]{./Resources/Images/swe.png}%
-\caption{SWE variables schematic \footnote{\url{https://www5.in.tum.de/SWE/lugano2013/swe_anatomy.pdf}}}
-\label{fig:swechem}
+\includegraphics[scale=0.32]{./Resources/Images/swe_edit.png}%
+\caption{SWE variables schematic \footnotemark}
+\label{fig:swechemedit}
 \end{figure}
-\end{multicols}
+\end{center}
+\end{itemize}
+\end{column}
+\end{columns}
+\vspace{-2em}
+%\footnotemark
+\footnotetext{\url{https://www5.in.tum.de/SWE/lugano2013/swe_anatomy.pdf}}
+
 \end{frame}
 \clearpage
+
+
+%%%%%%%%%%
+%%%%%%%%%%
+
+%\begin{frame}
+%    \shiftedframetitle{Shallow Water Equations (SWE) model {\small(cont)}}
+%\vspace{-2mm}
+%\begin{multicols}{2}
+%\begin{itemize}
+%\item<1->[] SWE model can be represented in a {\color{TUMBlauDunkel}matrix} form \dots
+%% derived from mass and momentum conservation laws, and depth averaging \dots %also derived by vertical averaging from the 3d incompressible ns eqs
+%\item<2->[]
+%\begin{align*}
+%\vspace{-15pt}
+%\begin{bmatrix}[1.3]
+%\myTUMdarkblue{h}\\
+%\myTUMdarkblue{hu}\\
+%\myTUMdarkblue{hv}\\
+%\end{bmatrix}_t \ + \
+%\begin{bmatrix}[1.0]
+%hu\\
+%hu^2 + \frac{1}{2}gh^2\\
+%huv\\
+%\end{bmatrix}_x\ &+ \
+%\begin{bmatrix}[1.0]
+%hv\\
+%huv\\
+%hv^2 + \frac{1}{2}gh^2\\
+%\end{bmatrix}_y =
+%\begin{bmatrix}[1.0]
+%0\\
+%-gh\ b_x\\
+%-gh\ b_y
+%\end{bmatrix}\\[1em]
+%\bar{q} = &\begin{bmatrix}[1.3]
+%\myTUMdarkblue{h}\\
+%\myTUMdarkblue{hu}\\
+%\myTUMdarkblue{hv}\\
+%\end{bmatrix}
+%\begin{matrix}[1.0]
+%\text{\hspace{-3em}\myTUMdarkblue{$\rightarrow\ $\textit{height}}}\\
+%\text{\hspace{-2pt}\myTUMdarkblue{$\rightarrow\ $\textit{dicharge in x}}} \\
+%\text{\hspace{5pt}\myTUMdarkblue{$\rightarrow\ $\textit{discharge in y}}}
+%\end{matrix}\\[2em]
+%\frac{\partial \bar{q}}{\partial t} + \dfrac{\partial \bar{F}(q)}{\partial x} + &\frac{\partial \bar{G}(q)}{\partial y} = S(h,x,y,t) \\[3em]
+%\end{align*}
+%%\end{itemize}
+%
+%\vfill\columnbreak
+%\vspace*{0.4cm}
+%%\begin{itemize}
+%\item<3->[]
+%\begin{figure}
+%\includegraphics[scale=0.32]{./Resources/Images/swe_edit.png}%
+%\caption{SWE variables schematic \footnote{\url{https://www5.in.tum.de/SWE/lugano2013/swe_anatomy.pdf}}}
+%\label{fig:swechem}
+%\end{figure}
+%\end{itemize}
+%\end{multicols}
+%\end{frame}
+%\clearpage
 
 %%%%%%%%%%%%%%%%%%%%
 %%%%%%%%%%%%%%%%%%%%
@@ -158,12 +243,12 @@ hv^2 + \frac{1}{2}gh^2\\
     \shiftedframetitle{Shallow Water Equations (SWE) model {\small(final)}}
 \begin{itemize}
 \setlength\itemsep{2em}
-\item<1->[] The \textbf{\myGreen{Shallow Water Equations}} \dots
-\item<2-> \myGreen{neglect vertical velocity};  $ W \ll U,V $, since horizontal distances $L$ $\gg$ vertical distance $H$
-\item<3-> provide a \myGreen{solution} for the \myGreen{pressure}
-\item<4-> simplify \myGreen{$3D$} Navier-Stokes \myGreen{to} a \myGreen{$2D$} system of equations
-\item<5-> represent a \myGreen{hyperbolic PDE} system $\rightarrow$ \myGreen{Riemann} Problem and \myGreen{FVM}
-\item<6-> Applications: {\small \myGreen{Free surface} flows around structures, tsunamis prediction, atmospheric flows, \dots}
+\item<1->[] The \textbf{\myTUMgreen{Shallow Water Equations}} \dots
+\item<2-> \myTUMgreen{neglect vertical velocity}:  $ W \ll U,V $, horizontal distances $L$ $\gg$ vertical distance $H$
+\item<3-> provide a \myTUMgreen{solution} for the \myTUMgreen{pressure}
+\item<4-> simplify \myTUMgreen{$3D$} Navier-Stokes \myTUMgreen{to} a \myTUMgreen{$2D$} system of equations
+\item<5-> represent a \myTUMgreen{hyperbolic PDE} system $\rightarrow$ \myTUMgreen{Riemann} Problem and \myTUMgreen{FVM}
+\item<6-> Applications: {\small \myTUMgreen{Free surface} flows around structures, tsunamis prediction, atmospheric flows, \dots}
 \end{itemize}
 \end{frame}
 \clearpage
@@ -177,26 +262,25 @@ hv^2 + \frac{1}{2}gh^2\\
 
 \begin{multicols}{2}
 \begin{itemize}
-\item<2->[]    
+\item<2->[]
  \hspace{0.35\columnwidth}{\large\textbf{Background}}
  \vspace{3em}
  \begin{itemize}
   \setlength\itemsep{2em}
-  \item  full description of \myDarkBlue{\textit{shallowFOAM}}  solver for \myDarkBlue{$2D$} SWE \cite{mintgen}
- \item  \myDarkBlue{coupling $2D$} SWE and \myDarkBlue{$3D$} RANS solvers $\rightarrow$ development of \textit{shallowInterFOAM} \cite{mintgen}
- \item B.Sc. Christiaan Osse implemented \cite{mintgen} with \myDarkBlue{\textit{preCICE}}
+  \item  full description of \myTUMdarkblue{\textit{shallowFOAM}}  solver for \myTUMdarkblue{$2D$} SWE \cite{mintgen}
+ \item  \myTUMdarkblue{coupling $2D$} SWE and \myTUMdarkblue{$3D$} RANS solvers $\rightarrow$ development of \textit{shallowInterFOAM} \cite{mintgen}
+ \item B.Sc. Christiaan Osse implemented \cite{mintgen} with \myTUMdarkblue{\textit{preCICE}}
  \end{itemize}
-    
+
 \vfill\columnbreak
 
 \item<3->[]
 \hspace{0.35\columnwidth}{\large\textbf{Goals}}
 \vspace{3em}
  \begin{itemize}
-    \setlength\itemsep{2em}
 
- \item<4-> \myCRed{Extend} \cite{mintgen} coupling ($2D$ $\leftrightarrow$ $3D$) as a \myCRed{flexible} approach to SWE solvers
- \item<5-> Test Case: $2D$ SWE solver \& OpenFOAM 
+ \item<4-> \myCRed{Extend} \cite{mintgen} coupling ($2D$ $\leftrightarrow$ $3D$) as a \myCRed{flexible} approach to SWE solvers\\[2em]
+ \item<5-> Test Case: $2D$ SWE solver \& OpenFOAM\\[2em]
  \item<6-> \myCRed{Coupling} \& \myCRed{Mapping} data from/to all setups: \vspace{0.4cm}
 \begin{table}[]
 \begin{tabular}{|lll|}\hline
@@ -222,7 +306,7 @@ $3D$ OpenFOAM & $\rightarrow$ & $3D$ OpenFOAM \\ \hline
 
 \begin{frame}
 	\shiftedframetitle{Tools}
- 	
+
 \begin{multicols}{2}
 \begin{itemize}
  \setlength\itemsep{10pt}
@@ -239,18 +323,18 @@ $3D$ OpenFOAM & $\rightarrow$ & $3D$ OpenFOAM \\ \hline
 \end{itemize}
 
 \item<3->[]
-\textbf{\textit{interFOAM}\footnote{\url{https://openfoamwiki.net/index.php/InterFoam}} - {\small OpenFOAM Multiphase Navier-Stokes Solver}}
+\textbf{\textit{interFoam}\footnote{\url{https://openfoamwiki.net/index.php/InterFoam}} - {\small OpenFOAM Multiphase Navier-Stokes Solver}}
 \begin{itemize}
 \vspace{5pt}
  \setlength\itemsep{6pt}
-\item \myCRed{VoF} (Volume of Fluid) method $\rightarrow$ phase-fraction interphase approach \myCRed{$\rho=\alpha\rho_1 + (1-\alpha)\rho_2$} 
+\item \myCRed{VoF} (Volume of Fluid) method $\rightarrow$ phase-fraction interphase approach \myCRed{$\rho=\alpha\rho_1 + (1-\alpha)\rho_2$}
 \item immiscible fluids (2-Phase)
 \item \myCRed{$3D$}
 \end{itemize}
 
 \vfill\columnbreak
 \item<4->[]
-\textbf{preCICE\footnote{\url{https://github.com/precice}} - \small{Coupling library for partitioned multi-physics simulations}}
+\textbf{preCICE\footnote{\url{https://github.com/precice}} - \small{Open-Source coupling library for partitioned multi-physics simulations}}
 \begin{itemize}
 \vspace{5pt}
 \item coupling \& mapping {\tiny (see table \ref{table:1})}
@@ -278,9 +362,9 @@ $3D$ OpenFOAM & $\rightarrow$ & $3D$ OpenFOAM \\ \hline
 \begin{table}[]
 \begin{tabular}{ cl }
 {\large\textbf{Progress}} & {\large\hspace{5pt} \textbf{Implementation}}\\
-\includegraphics[scale=0.5]{./Resources/Images/bar1.png} & \hspace{5pt}Bidirectional $2D$ SWE $\leftrightarrow$ $2D$ SWE  \\ 
-\includegraphics[scale=0.5]{./Resources/Images/bar2.png} &\hspace{5pt} Unidirectional $2D$ SWE $\rightarrow$ $3D$ OF \\ 
-\includegraphics[scale=0.5]{./Resources/Images/bar2.png} &\hspace{5pt} Unidirectional $3D$ OF $\rightarrow$ $2D$ SWE \\ 
+\includegraphics[scale=0.5]{./Resources/Images/bar1.png} & \hspace{5pt}Bidirectional $2D$ SWE $\leftrightarrow$ $2D$ SWE  \\
+\includegraphics[scale=0.5]{./Resources/Images/bar2.png} &\hspace{5pt} Unidirectional $2D$ SWE $\rightarrow$ $3D$ OF \\
+\includegraphics[scale=0.5]{./Resources/Images/bar2.png} &\hspace{5pt} Unidirectional $3D$ OF $\rightarrow$ $2D$ SWE \\
 \includegraphics[scale=0.5]{./Resources/Images/bar3.png} & \hspace{5pt} Bidirectional $3D$ OF $\leftrightarrow$ $3D$ OF \\
 \end{tabular}
 
@@ -290,12 +374,12 @@ $3D$ OpenFOAM & $\rightarrow$ & $3D$ OpenFOAM \\ \hline
 \vfill\columnbreak
 
 \item<2->[] \hspace{0.35\columnwidth}{\Large\textbf{Challenges}}\\[2cm]
-\item<3->[] \hspace{0.23\columnwidth} map $h, p$ between models\\[1cm]
-\item<4->[] {\Large\hspace{0.23\columnwidth}Boundary Conditions}
+\item<3-> \hspace{0.23\columnwidth} Map $h, p$ across models\\[1cm]
+\item<4-> \hspace{0.23\columnwidth} Boundary conditions
 \begin{itemize}
  \setlength{\itemindent}{3.5cm}
 \vspace{0.2cm}
-\item<5-> Inflow / Outflow 
+\item<5-> Inflow / Outflow
 \item<5-> Dirchlet / Neumann / Robin
 \end{itemize}
 \end{itemize}
@@ -318,7 +402,7 @@ $3D$ OpenFOAM & $\rightarrow$ & $3D$ OpenFOAM \\ \hline
 \begin{frame}
 \shiftedframetitle{Current Status}
 \vspace{-0.5cm}
-{\large $2D$ SWE - $2D$ SWE \textbf{\myDarkBlue{Unidirectional}}}\\
+{\large $2D$ SWE - $2D$ SWE \textbf{\myTUMdarkblue{Unidirectional}}}\\
 Case: Radial dam break, no bathymetry
 \begin{textblock*}{1cm}(17cm,1pt) % {block width} (coords)
 %\begin{figure}
@@ -344,7 +428,7 @@ Case: Radial dam break, no bathymetry
 \begin{frame}
 \shiftedframetitle{Current Status}
 \vspace{-0.5cm}
-{\large $2D$ SWE - $2D$ SWE \textbf{\myDarkBlue{Bidirectional}}}\\
+{\large $2D$ SWE - $2D$ SWE \textbf{\myTUMdarkblue{Bidirectional}}}\\
 Case: Radial dam break, no bathymetry
 \begin{textblock*}{1cm}(17cm,1pt) % {block width} (coords)
 %\begin{figure}
@@ -373,16 +457,16 @@ Case: Radial dam break, no bathymetry
 \begin{multicols}{2}
 \begin{itemize}
 \setlength\itemsep{2em}
-\item \myGreen{2D SWE} domain $\leftrightarrow$ \myGreen{3D interFOAM } domain 
-\item fit \myGreen{Fluid-Fluid adapter} preCICE   
-\item \myGreen{Exchange} of variables
+\item \myTUMgreen{2D SWE} domain $\leftrightarrow$ \myTUMgreen{3D interFOAM } domain
+\item fit \myTUMgreen{Fluid-Fluid adapter} preCICE
+\item \myTUMgreen{Exchange} of variables
 \begin{itemize}
 \setlength\itemsep{1em}
 \vspace{5pt}
 \item discharges $hu, hv$
 \item height $h$
 \item volume indicator $\alpha$
-\item \myGreen{BCs} $->$ Dirchlet? Neumann? Robin?
+\item \myTUMgreen{BCs} $->$ Dirchlet? Neumann? Robin?
 \end{itemize}
 \end{itemize}
 
@@ -412,15 +496,15 @@ Case: Radial dam break, no bathymetry
 \begin{itemize}
 \setlength\itemsep{2em}
 \item 3D interFOAM  \textit{left} $\leftrightarrow$ \textit{right} domains
-\item fit \myGreen{Fluid-Fluid adapter} preCICE   
-\item \myGreen{Exchange} of variables
+\item fit \myTUMgreen{Fluid-Fluid adapter} preCICE
+\item \myTUMgreen{Exchange} of variables
 \begin{itemize}
 \setlength\itemsep{1em}
 \vspace{5pt}
 \item discharges $hu, hv$
 \item height $h$
 \item volume indicator $\alpha$
-\item \myGreen{BCs} $->$ Dirchlet? Neumann? Robin?
+\item \myTUMgreen{BCs} $->$ Dirchlet? Neumann? Robin?
 \end{itemize}
 \end{itemize}
 
@@ -443,7 +527,7 @@ Case: Radial dam break, no bathymetry
 %%%%%%%%%%%%%%%%%%%%
 %\begin{frame}
 %    \shiftedframetitle{Farben}
-%    
+%
 %Als erstes soll mit schwarz und weiß gearbeitet werden.\newline
 %Für Aufwändigere Darstellungen sind Farben mit Bedacht und in möglichst
 %geringem Umfang einzusetzen.
@@ -495,7 +579,7 @@ Case: Radial dam break, no bathymetry
 %%%%%%%%%%%%%%%%%%%
 %\begin{frame}
 %    \shiftedframetitle{Texte}
-% 
+%
 %Kurze und knappe Texte, Fließtexte linksbündig, kein Blocksatz \\[\baselineskip]
 %
 %Beispiel:\newline
@@ -514,14 +598,14 @@ Case: Radial dam break, no bathymetry
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %\begin{frame}
 %    \shiftedframetitle{Bilder -- Allgemein}
-%    
+%
 %schlichte Darstellung von Informationen \\[\baselineskip]
 %
 %reduzierte Farben \\[\baselineskip]
 %
 %Rahmen und Überlagerungen nach Möglichkeit vermeiden \\[\baselineskip]
 %
-%    
+%
 %\end{frame}
 %\clearpage
 %
@@ -531,7 +615,7 @@ Case: Radial dam break, no bathymetry
 %%%%%%%%%%%%%%%%%%%%%%%%%%
 %\begin{frame}
 %    \shiftedframetitle{Bilder}
-%    
+%
 %Bildbeschreibung\newline
 %oberer Bildrand: Begrenzung durch Text\\[\baselineskip]
 %
@@ -564,7 +648,7 @@ Case: Radial dam break, no bathymetry
 %    \vfill\columnbreak
 %    \includegraphics[width=\columnwidth, height=.7\textheight]{./Resources/Images/SternenhimmelHochkant.jpg}%
 %\end{multicols}
-%    
+%
 %\end{frame}
 %\clearpage
 %
@@ -597,7 +681,7 @@ Case: Radial dam break, no bathymetry
 %\hspace*{-\PraesentationSeitenrand}%
 %\includegraphics[width=\paperwidth]{./Resources/Images/SternenhimmelQuer.jpg}
 %\end{minipage}
-%    
+%
 %\end{frame}
 %\clearpage
 %
@@ -606,7 +690,7 @@ Case: Radial dam break, no bathymetry
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %\begin{frame}
 %    \shiftedframetitle{Nicht Format füllende Bilder}
-%    
+%
 %    Weißer bzw. transparenter Hintergrund\newline
 %    mit genug Freiraum anordnen
 %
@@ -633,7 +717,7 @@ Case: Radial dam break, no bathymetry
 %\hspace*{-\PraesentationSeitenrand}%
 %\includegraphics[width=\textwidth]{./Resources/Images/SternenhimmelQuer.jpg}
 %\end{minipage}
-%    
+%
 %\end{frame}
 %\clearpage
 %
@@ -642,7 +726,7 @@ Case: Radial dam break, no bathymetry
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %\begin{frame}
 %    \shiftedframetitle{Nicht Format füllende Bilder}
-%    
+%
 %Alternativ mit formatfüllendem Hintergrund: Weiß 5\% dunkler\newline
 %Beschriftungen können zusätzlich neben den Bildern angebracht werden
 %
@@ -664,7 +748,7 @@ Case: Radial dam break, no bathymetry
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %\begin{frame}
 %    \shiftedframetitle{Tabelle -- Beispiel 1}
-%    
+%
 %Tabelle ohne Farbe und kein Rand \\
 %innerer Seitenrand links 0 cm, um Faktor 1,75 skalierte Tabelle (für genug Zeilenabstand)
 %
@@ -688,7 +772,7 @@ Case: Radial dam break, no bathymetry
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %\begin{frame}
 %    \shiftedframetitle{Tabelle -- Beispiel 2}
-%    
+%
 %Tabelle ohne Farbe und mit Rand\\
 %automatische Zelleninnenabstände, um Faktor 1,75 skalierte Tabelle (für genug Zeilenabstand)
 %
@@ -736,7 +820,7 @@ Case: Radial dam break, no bathymetry
 %                enlarge y limits=0.15,
 %                symbolic y coords={Kategorie 4,Kategorie 3,Kategorie 2,Kategorie 1},
 %                ytick=data,
-%                legend image code/.code={\draw[draw=none] (0cm,-0.12cm) rectangle (0.29cm,0.17cm);}, % Legenden-Symbol  
+%                legend image code/.code={\draw[draw=none] (0cm,-0.12cm) rectangle (0.29cm,0.17cm);}, % Legenden-Symbol
 %                legend columns=3,
 %                reverse legend,
 %                legend style={
@@ -747,25 +831,25 @@ Case: Radial dam break, no bathymetry
 %                 },
 %                 legend to name=PraesentationDiagrammHorizontalLegende
 %            ]
-%            
+%
 %            \addlegendentry{Datenreihe 3}
 %            \addlegendentry{Datenreihe 2}
 %            \addlegendentry{Datenreihe 1}
-%            
+%
 %            \addplot[color=TUMBlauMittel, fill=TUMBlauMittel] coordinates {
 %                (1.2,Kategorie 1)
 %                (1.6,Kategorie 2)
 %                (2.2,Kategorie 3)
 %                (3.4,Kategorie 4)
 %            };
-%            
+%
 %            \addplot[color=TUMBlauHell, fill=TUMBlauHell] coordinates {
 %                (1.5,Kategorie 1)
 %                (3.0,Kategorie 2)
 %                (1.0,Kategorie 3)
 %                (2.0,Kategorie 4)
 %            };
-%                
+%
 %            \addplot[color=TUMBlauDunkel, fill=TUMBlauDunkel] coordinates {
 %                (3.0,Kategorie 1)
 %                (2.0,Kategorie 2)
@@ -807,7 +891,7 @@ Case: Radial dam break, no bathymetry
 %                ytick={0,1,2,3,4,5,6},
 %                every tick label/.append style={font=\fontsize{13}{14}\selectfont},
 %                ymajorgrids,
-%                legend image code/.code={\draw[draw=none] (0cm,-0.12cm) rectangle (0.29cm,0.17cm);}, % Legenden-Symbol  
+%                legend image code/.code={\draw[draw=none] (0cm,-0.12cm) rectangle (0.29cm,0.17cm);}, % Legenden-Symbol
 %                legend columns=3,
 %                reverse legend,
 %                legend style={
@@ -819,31 +903,31 @@ Case: Radial dam break, no bathymetry
 %                 },
 %                legend to name=PraesentationDiagrammVertikalLegende
 %            ]
-%            
-%            \addlegendentry{Datenreihe 3}        
-%            \addlegendentry{Datenreihe 2}    
-%            \addlegendentry{Datenreihe 1}    
-%            
+%
+%            \addlegendentry{Datenreihe 3}
+%            \addlegendentry{Datenreihe 2}
+%            \addlegendentry{Datenreihe 1}
+%
 %            \addplot[color=TUMBlauDunkel, fill=TUMBlauDunkel] coordinates {
 %                (Kategorie 1,4.2)
 %                (Kategorie 2,2.5)
 %                (Kategorie 3,3.5)
 %                (Kategorie 4,4.5)
 %            };
-%            
+%
 %            \addplot[color=TUMBlauHell, fill=TUMBlauHell] coordinates {
 %                (Kategorie 1,2.3)
 %                (Kategorie 2,4.5)
 %                (Kategorie 3,1.8)
 %                (Kategorie 4,2.8)
 %            };
-%            
+%
 %            \addplot[color=TUMBlauMittel, fill=TUMBlauMittel] coordinates {
 %                (Kategorie 1,2.0)
 %                (Kategorie 2,2.0)
 %                (Kategorie 3,3.0)
 %                (Kategorie 4,5.0)
-%            };        
+%            };
 %        \end{axis}
 %    \end{tikzpicture}
 %
