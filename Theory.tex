@@ -145,25 +145,9 @@
 %%%%%%%%%%%%%%%%%%%%
 \begin{frame}
     \shiftedframetitle{\large Shallow Water Equations (SWE) model {\small(cont)}}
-\vspace{-2mm}
-
-\begin{columns}
-
-\begin{column}{0.4\textwidth}  %%<--- here
-\begin{itemize}[leftmargin=*]
-\item<1->[]
-\vspace{2cm}
-\begin{center}
-\begin{figure}
-\includegraphics[scale=0.5]{./Resources/Images/imagesThesis/floor.png}%
-\caption{SWE variables schematic}
-\label{fig:swechemedit}
-\end{figure}
-\end{center}
-\end{itemize}
-\end{column}
-
-\begin{column}{0.35\textwidth}
+%\vspace{-2mm}
+%\begin{columns}
+\begin{minipage}{0.35\textwidth}
 \begin{itemize}
 \item<1->[] SWE model can be represented in a {\color{TUMBlauDunkel}matrix} form \dots
 % derived from mass and momentum conservation laws, and depth averaging \dots %also derived by vertical averaging from the 3d incompressible ns eqs
@@ -201,17 +185,26 @@ hv^2 + \frac{1}{2}gh^2\\
 \text{\hspace{5pt}\myTUMdarkblue{$\rightarrow\ $\textit{discharge in y}}}
 \end{matrix}
 \end{align*}
-\vspace{2pt}
 \item<2->[]
 \begin{align*}
 \qquad \qquad \frac{\partial \bar{q}}{\partial t} + \dfrac{\partial \bar{F}(q)}{\partial x} + &\frac{\partial \bar{G}(q)}{\partial y} = S(h,x,y,t)
 \end{align*}
 \end{itemize}
-
-\end{column}
-\end{columns}
-\vspace{-2em}
-%\footnotemark
+\end{minipage}
+\begin{minipage}{0.45\textwidth}  
+\begin{itemize}[leftmargin=*]
+\item<1->[]
+\vspace{2cm}
+\begin{center}
+\begin{figure}
+\includegraphics[scale=0.55]{./Resources/Images/imagesThesis/floor.png}%
+\caption{SWE variables schematic}
+\label{fig:swechemedit}
+\end{figure}
+\end{center}
+\end{itemize}
+\end{minipage}
+%\end{columns}
 
 \end{frame}
 \clearpage
@@ -284,27 +277,80 @@ hv^2 + \frac{1}{2}gh^2\\
     \shiftedframetitle{\large Shallow Water Equations (SWE) model {\small(final)}}
 \hspace{3.5cm}
 \begin{minipage}{0.7\textwidth}
-\begin{tcolorbox}    
+\begin{tcolorbox}[colframe=TUMGreen,
+colback=TUMGreen!30]     
 \begin{itemize}
 \setlength\itemsep{1.9em}
-\item<1->[] The \textbf{\myTUMgreen{Shallow Water Equations}} \dots
-\item<1-> are \myTUMgreen{derived} from the \myTUMgreen{Navier-Stokes} Equations
-\item<1-> \myTUMgreen{neglect vertical velocity}:  $ W \ll U,V $, horizontal distances $L$ $\gg$ vertical distance $H$
-\item<1-> provide a \myTUMgreen{solution} for the \myTUMgreen{pressure}
-\item<1-> simplify \myTUMgreen{$3D$} Navier-Stokes \myTUMgreen{to} a \myTUMgreen{$2D$} system of equations
-\item<1-> represent a \myTUMgreen{hyperbolic PDE} system $\rightarrow$ \myTUMgreen{Riemann} Problem and \myTUMgreen{FVM}
+\item<1->[] The \textbf{\myTUMdarkblue{Shallow Water Equations}} \dots
+\item<1-> simplify \myTUMdarkblue{$3D$} Navier-Stokes \myTUMdarkblue{to} a \myTUMdarkblue{$2D$} system of equations
+\item<1-> \myTUMdarkblue{neglect vertical velocity}:  $ W \ll U,V $, horizontal distances $L$ $\gg$ vertical distance $H$
+\item<1-> represent a \myTUMdarkblue{hyperbolic PDE} system $\rightarrow$ \myTUMdarkblue{Riemann} Problem and \myTUMdarkblue{FVM}
 \item<1-> Applications: 
 \begin{itemize}
 \addtolength{\itemindent}{1cm}
-\item \myTUMgreen{Free surface flows} around structures, 
-\item \myTUMgreen{tsunamis} prediction,
-\item \myTUMgreen{atmospheric flows}, \dots
+\item \myTUMdarkblue{Free surface flows} around structures, 
+\item \myTUMdarkblue{tsunamis} prediction,
+\item \myTUMdarkblue{atmospheric flows}, \dots
 \end{itemize}
 \end{itemize}
 \end{tcolorbox}
+\addtolength{\leftmargini}{-0.8cm}
+\begin{itemize}
+\item<2->[]
+\begin{tcolorbox}[colframe=TUMOrange,
+colback=TUMOrange!30] 
+Both NS and SWE reach a solution for free-surface problems $\rightarrow$ compatibility between the respective solution methods
+\end{tcolorbox}
+\end{itemize}
 \end{minipage}
 \end{frame}
 \clearpage
 
 
 
+
+%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%
+\begin{frame}
+    \shiftedframetitle{\large Flow characterization}
+\hspace{1cm}
+\begin{minipage}{0.4\textwidth}
+\centering
+\begin{tcolorbox}[title=\centering \textbf{Subcritical flow }, colframe=TUMDarkBlue,
+colback=TUMDarkBlue!30] 
+hola
+\end{tcolorbox}
+\vspace{0.5cm}
+\includegraphics[width=0.8\textwidth]{Resources/Images/subcritical.png}
+\end{minipage}
+\hspace{1cm}
+\begin{minipage}{0.4\textwidth}
+\centering
+\begin{tcolorbox}[title=\centering \textbf{Supercritical flow}, colframe=TUMDarkBlue,
+colback=TUMDarkBlue!30] 
+hola
+\end{tcolorbox}
+\vspace{0.5cm}
+\includegraphics[width=0.8\textwidth]{Resources/Images/supercritical.png}
+\end{minipage}
+\end{frame}
+
+\clearpage
+
+
+
+\begin{frame}
+    \shiftedframetitle{\large Flow characterization \small(cont)}
+
+\begin{minipage}{0.5\textwidth}
+\vspace{1cm}
+\includegraphics[width=\textwidth]{Resources/Images/imagesThesis/hydjump.png}
+\end{minipage}
+\hspace{1cm}
+\begin{minipage}{0.4\textwidth}
+\begin{tcolorbox}[title=\centering \textbf{Hydraulic jump}, colframe=TUMDarkBlue,
+colback=TUMDarkBlue!30] 
+hola
+\end{tcolorbox}
+\end{minipage}
+\end{frame}

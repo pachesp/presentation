@@ -72,14 +72,14 @@
 \hspace{1cm}
 \begin{minipage}{0.35\textwidth}
 \begin{tcolorbox}[
-colframe=TUMDarkestBlue,
+colframe=TUMDarkBlue,
 colback=TUMDarkBlue!50,
 title = \centering SWE\\2D] 
 \begin{itemize}
-\item[\checkmark] Simpler model 
-\item[\checkmark] $O(n^2)$
-\item[$\times$] Valid when $H/L \leq 0.05$ %\vspace{1cm}
-\item[$\times$] 3D effects neglected. \vspace{0.5cm}
+\item[+] Simpler model 
+\item[+] $O(n^2)$
+\item[-] Valid when $H/L \leq 0.05$ %\vspace{1cm}
+\item[-] 3D effects neglected. \vspace{0.5cm}
 \item<2-> \large \textbf{interFoam}
 \end{itemize}
 \end{tcolorbox}    
@@ -97,7 +97,7 @@ colback=TUMOrange!50,
 title = \centering Navier-Stokes\\3D]     
 \begin{itemize}
 \item[+] 3D effects are caught
-\item[-] large number for accurate results even for low accuracy results
+\item[-] large number of cells for low accuracy results
 \item[-] $O(n^3)$\vspace{0.6cm}
 \item<2-> \large \textbf{interFoam}
 \end{itemize}
@@ -154,7 +154,7 @@ title = \centering SWE\\2D]
 {\Large \textbf{This work}}
 \vspace{0.3cm}
 \begin{tcolorbox}[
-colframe=TUMDarkestBlue,
+colframe=TUMDarkBlue,
 colback=TUMDarkBlue!50] 
 {\large \textbf{preCICE \& C++ SWE solver}}
 \end{tcolorbox}  
@@ -171,9 +171,9 @@ colframe=TUMOrange,
 colback=TUMOrange!50,
 title = \centering Navier-Stokes\\3D]     
 \begin{itemize}
-\item[\checkmark] 3D effects
-\item[$\times$] large number for accurate results even for low accuracy results
-\item[$\times$] $O(n^3)$\vspace{0.6cm}
+\item[+] captures 3D effects
+\item[-] large number of cells for low accuracy results
+\item[-] $O(n^3)$\vspace{0.6cm}
 \item \large \textbf{interFoam}
 \end{itemize}
 \end{tcolorbox}
