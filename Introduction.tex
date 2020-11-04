@@ -16,14 +16,14 @@
 %	\setlength{\itemindent}{1cm}
 %		\item Shallow Water Equations model 
 %	\end{itemize}
-    \item<4->  Tools 
+%    \item<4->  Tools 
 %    	\begin{itemize}
 %    	\setlength{\itemindent}{1cm}
 %		\item interFoam
 %		\item SWE solver 
 %	\end{itemize}
-    \item<5-> Implementation
-    \item<6-> Results
+    \item<4-> Implementation
+    \item<5-> Results
     \item<6-> Conclusions
 %    	\begin{itemize}
 %    	\setlength{\itemindent}{1cm}
@@ -68,19 +68,19 @@
 %\item mapping
 %\item Boundary conditions
 %\end{itemize}
-{\Large \textbf{Previous work \cite{mintgen}}}\\[0.5cm]
+{\Large \textbf{Idea...}}\\[1.5cm]
 \hspace{1cm}
 \begin{minipage}{0.35\textwidth}
 \begin{tcolorbox}[
 colframe=TUMDarkBlue,
-colback=TUMDarkBlue!50,
+%colback=TUMDarkBlue!50,
 title = \centering SWE\\2D] 
 \begin{itemize}
+\setlength\itemsep{1em}
 \item[+] Simpler model 
 \item[+] $O(n^2)$
 \item[-] Valid when $H/L \leq 0.05$ %\vspace{1cm}
 \item[-] 3D effects neglected. \vspace{0.5cm}
-\item<2-> \large \textbf{interFoam}
 \end{itemize}
 \end{tcolorbox}    
 \end{minipage}
@@ -93,13 +93,13 @@ title = \centering SWE\\2D]
 %\vspace{0cm}
 \begin{tcolorbox} [
 colframe=TUMOrange,
-colback=TUMOrange!50,
+%colback=TUMOrange!50,
 title = \centering Navier-Stokes\\3D]     
 \begin{itemize}
+\setlength\itemsep{1em}
 \item[+] 3D effects are caught
 \item[-] large number of cells for low accuracy results
 \item[-] $O(n^3)$\vspace{0.6cm}
-\item<2-> \large \textbf{interFoam}
 \end{itemize}
 \end{tcolorbox}    
 \end{minipage}
@@ -134,57 +134,21 @@ title = \centering Navier-Stokes\\3D]
 %\item mapping
 %\item Boundary conditions
 %\end{itemize}
-{\Large \textbf{Previous work \cite{mintgen}}}\\[0.5cm]
-\hspace{1cm}
-\begin{minipage}{0.35\textwidth}
-\begin{tcolorbox}[
-colframe=TUMDarkestBlue,
-colback=TUMDarkBlue!50,
-title = \centering SWE\\2D] 
+%\hspace{0.5cm}
+\begin{minipage}{0.3\textwidth}
 \begin{itemize}
-\item[+] Simpler model 
-\item[+] $O(n^2)$
-\item[-] Valid when $H/L \leq 0.05$ %\vspace{1cm}
-\item[-] Looses 3D effects. \vspace{0.5cm}
-\item \large \textbf{interFoam}
+\item<1->[] {\Large \textbf{Previous work}}\\[1.5cm]
+\includegraphics[width=1\textwidth]{Resources/Images/Mintgenwork.png}
 \end{itemize}
-\end{tcolorbox}    
-\vspace{1cm}
-\hspace{-1cm}
-{\Large \textbf{This work}}
-\vspace{0.3cm}
-\begin{tcolorbox}[
-colframe=TUMDarkBlue,
-colback=TUMDarkBlue!50] 
-{\large \textbf{preCICE \& C++ SWE solver}}
-\end{tcolorbox}  
 \end{minipage}
-\begin{minipage}{0.15\textwidth}
-\hspace{0.5cm}
-\vspace{3.5cm}
-\includegraphics[width=1\textwidth]{Resources/Images/arrow2.png}\\
-\end{minipage}
-\begin{minipage}{0.35\textwidth}
-%\vspace{-0.5cm}
-\begin{tcolorbox} [
-colframe=TUMOrange,
-colback=TUMOrange!50,
-title = \centering Navier-Stokes\\3D]     
+\hspace{3cm}
+\begin{minipage}{0.5\textwidth}
+\vspace{-2.2cm}
 \begin{itemize}
-\item[+] captures 3D effects
-\item[-] large number of cells for low accuracy results
-\item[-] $O(n^3)$\vspace{0.6cm}
-\item \large \textbf{interFoam}
+\item<2->[] {\Large \textbf{This work}}\\[3cm]
+\includegraphics[width=1\textwidth]{Resources/Images/pash2.png}
+%\vspace*{\fill}
 \end{itemize}
-\end{tcolorbox}
-\vspace{1cm}
-\hspace{-1cm}
-\vspace{0.3cm}
-\begin{tcolorbox}[
-colframe=TUMOrange,
-colback=TUMOrange!50] 
-{\large \textbf{interFoam preCICE adapter}}
-\end{tcolorbox}  
 \end{minipage}
 
 
