@@ -56,18 +56,15 @@
 \end{align*}
 \end{itemize}
 \end{minipage}
-\hspace{-1.5cm}
+\hspace{-2.5cm}
 \begin{minipage}{0.15\textwidth}
 \begin{itemize}
 \item<3->[]
 %\includegraphics[width=1\textwidth]{Resources/Images/download.png}\\[2cm]
-\includegraphics[width=1\textwidth]{Resources/Images/arrow3.png}\\
-%\item<3->[] {\LARGE  \makebox[\textwidth]{+}}
-%\item<3->[] {\Large \makebox[\textwidth]{\myTUMgreen{Depth-Averaged}}}
-%\item<3->[] {\Large \makebox[\textwidth]{\myTUMgreen{Integration}}}
+\includegraphics[width=1.2\textwidth]{Resources/Images/arrow3.png}\\
 \end{itemize}           
 \end{minipage}
-\hspace{1cm}
+\hspace{1.5cm}
 \begin{minipage}{0.4\textwidth}
 \begin{itemize}
 \item<3->[]
@@ -92,7 +89,7 @@
 %\begin{columns}
 \begin{minipage}{0.35\textwidth}
 \begin{itemize}
-\item<1->[] SWE model can be represented as a {\color{TUMBlauDunkel}matrix} form \dots
+\item<1->[] SWE model can be represented as a matrix form \dots
 % derived from mass and momentum conservation laws, and depth averaging \dots %also derived by vertical averaging from the 3d incompressible ns eqs
 \item<1->[]
 \begin{align*}
@@ -173,9 +170,9 @@ v+c
 \begin{itemize}
 \setlength\itemsep{1.8em}
 \item<1-> \textbf{simplify} \textit{$3D$} Navier-Stokes \textit{to} a \textit{$2D$} system of equations
-\item<1-> \textit{\textbf{neglect} vertical velocity}:  $ W \ll U,V $, horizontal distances $L$ $\gg$ vertical distance $H$
-\item<1-> represent a \textbf{hyperbolic PDE} system $\rightarrow$ Riemann Problem and FVM
-\item<1-> \textbf{Applications}: 
+\item<2-> \textit{\textbf{neglect} vertical velocity}:  $ W \ll U,V $, horizontal distances $L$ $\gg$ vertical distance $H$
+\item<3-> represent a \textbf{hyperbolic PDE} system $\rightarrow$ Riemann Problem
+\item<4-> \textbf{Applications}: 
 \begin{itemize}
 \addtolength{\itemindent}{1cm}
 \item \textit{Free surface flows} around structures, 
@@ -186,7 +183,7 @@ v+c
 %\end{tcolorbox}
 %\addtolength{\leftmargini}{-0.8cm}
 %\begin{itemize}
-\item<2->[]
+\item<5->[]
 \begin{tcolorbox}[%colframe=TUMGreen,
 colback=white] 
 \textbf{Both NS and SWE reach a solution for free-surface problems $\rightarrow$ compatibility between the respective solution methods}
@@ -199,101 +196,51 @@ colback=white]
 %%%%%%%%%%%%%%%
 
 \begin{frame}
-    \shiftedframetitle{2. Theory - \large Flow characterization}
-    \hspace{0.8cm}
-\begin{minipage}{0.45\textwidth}
-\includegraphics[width=1\textwidth]{Resources/Images/calmriver.png}
-\end{minipage}
-\hspace{1.1cm}
-\begin{minipage}{0.45\textwidth}
-\includegraphics[width=0.75\textwidth]{Resources/Images/fastriver.jpeg}
-\end{minipage}
+    \shiftedframetitle{2. Theory - \large Flow characterization \small(initial)}
+    \vspace{4cm}
+\centering
+{\Huge\textbf{Flow Characterization}}
 \end{frame}
 
-%%%%%%%%%%%%%%%%%
-%%%%%%%%%%%%%%%%%
-\begin{frame}
-    \shiftedframetitle{2. Theory - \large Flow characterization}
-\begin{minipage}{0.45\textwidth}
-\begin{itemize}
-\item<1->[] 
-\centering
-\vspace{-1cm}
-\myTUMdarkblue{Subcritical flow}\\[0.5cm]
-\hspace{0.2cm}
-\includegraphics[width=0.6\textwidth]{Resources/Images/waves.jpg}
-\\[0.5cm]
-\hspace{1.8cm}
-\includegraphics[width=0.6\textwidth]{Resources/Images/paddle.jpg}
-\end{itemize}
-\end{minipage}
-%\hspace{1cm}
-\begin{minipage}{0.45\textwidth}
-\begin{itemize}
-\item<2->[]
-\centering
-\myTUMdarkblue{Supercritical flow}\\[0.5cm]
-\hspace{0.25cm}
-\includegraphics[width=0.8\textwidth]{Resources/Images/eisbach.jpg}\\[0.5cm]
-\hspace{2cm}
-\includegraphics[width=0.5\textwidth]{Resources/Images/faucet.jpeg} 
-\end{itemize}
-\end{minipage}
-\end{frame}
-
-\clearpage
-
-
 
 %%%%%%%%%%%%%%%%%
 %%%%%%%%%%%%%%%%%
-\begin{frame}
-    \shiftedframetitle{2. Theory - \large Flow characterization}
-\begin{minipage}{0.45\textwidth}
-\begin{itemize}
-\item<1->[] 
-\centering
-\myTUMdarkblue{Subcritical flow}\\[0.5cm]
-\hspace{0.2cm}
-\begin{minipage}{0.4\textwidth}
-\includegraphics[width=1\textwidth]{Resources/Images/waves.jpg}
-\end{minipage}
-\begin{minipage}{0.45\textwidth}
-\includegraphics[width=0.67\textwidth]{Resources/Images/paddle.jpg}
-\end{minipage}\\[0.5cm]
-\hspace{0.25cm}
-\includegraphics[width=0.75\textwidth]{Resources/Images/subcritical.png}
-\end{itemize}
-\end{minipage}
-%\hspace{1cm}
-\begin{minipage}{0.4\textwidth}
-\centering
-\begin{itemize}
-\item<2->[]
-\centering
-\myTUMdarkblue{Supercritical flow}\\[0.5cm]
-\hspace{0.25cm}
-\begin{minipage}{0.4\textwidth}
-\includegraphics[width=0.98\textwidth]{Resources/Images/faucet.jpeg}
-\end{minipage}
-\begin{minipage}{0.45\textwidth}
-\includegraphics[width=0.78\textwidth]{Resources/Images/eisbach.jpg}
-\end{minipage}\\[0.4cm]
-\includegraphics[width=0.85\textwidth]{Resources/Images/supercritical.png}
-\end{itemize}
-\end{minipage}
-\end{frame}
-
-\clearpage
-
-
-%%%%%%%%%%%%%%%%
-%%%%%%%%%%%%%%%%
 \begin{frame}
     \shiftedframetitle{2. Theory - \large Flow characterization \small(cont)}
+\begin{minipage}{0.45\textwidth}
+\begin{itemize}
+\vspace{1cm}
+\item<1->[] 
+\centering
+{\LARGE \textbf{Subcritical flow}}\\[0.15cm]
+\hspace{0.2cm}
+\includegraphics[width=1\textwidth]{Resources/Images/subcritical.png}
+\end{itemize}
+\end{minipage}
+\hspace{1cm}
+\begin{minipage}{0.45\textwidth}
+\centering
+\begin{itemize}
+\vspace{1cm}
+\item<2->[] 
+\centering
+{\LARGE \textbf{Supercritical flow}}\\[0.15cm]
+\hspace{0.25cm}
+\includegraphics[width=1\textwidth]{Resources/Images/supercritical.png}
+\end{itemize}
+\end{minipage}
+\end{frame}
+
+\clearpage
+
+
+%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%
+\begin{frame}
+    \shiftedframetitle{2. Theory - \large Flow characterization \small(final)}
 \begin{minipage}{0.5\textwidth}
 \vspace{1cm}
-\includegraphics[width=\textwidth]{Resources/Images/imagesThesis/hydjump.png}
+\includegraphics[width=\textwidth]{Resources/Images/imagesThesis/hydjump2.png}
 \end{minipage}
 \hspace{1cm}
 \begin{minipage}{0.4\textwidth}
@@ -301,7 +248,7 @@ colback=white]
 \begin{tcolorbox}[colback=white] 
 \begin{itemize}
 \setlength{\itemsep}{1cm}
-\item[] $\mathbf{Fr = \dfrac{v}{c} =\dfrac{V}{\sqrt{gh}} \propto \dfrac{inertia\ force}{gravity\ force}}$
+\item[] $\mathbf{Fr = \dfrac{V}{c} =\dfrac{V}{\sqrt{gh}} \propto \dfrac{inertia\ force}{gravity\ force}}$
 \item Supercritical $\sqrt{gh}\ < V$
 \item Subcritical $\sqrt{gh}\ > V$
 \item Critical $\sqrt{gh}\  =  V$

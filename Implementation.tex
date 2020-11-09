@@ -1,68 +1,85 @@
-
 %%%%%%%%%%%%%%%%%
 %%%%%%%%%%%%%%%%%
 \begin{frame}
 	\shiftedframetitle{3. Implementation}
-%\begin{minipage}{0.35\textwidth}
-\begin{itemize}
-\item<1->[]
-\begin{tcolorbox}[title= \textbf{Domain Mapping},colframe=TUMDarkBlue] 
-\begin{table}[]
-\begin{tabular}{llp{2cm}ll}
-\textbf{1.} Supercritical & $2D$ SWE  $\rightarrow$  $2D$  SWE  & & \textbf{5.} Supercritical & $3D$ OF   $\rightarrow$  $2D$ SWE  \\ 
-\textbf{2.} Subcritical   & $2D$ SWE  $\rightarrow$  $2D$  SWE & & \textbf{6.} Subcritical   & $3D$ OF   $\rightarrow$  $2D$ SWE     \\[0.2cm]
-\textbf{3.} Supercritical & $2D$ SWE  $\rightarrow$  $3D$  OF   & & \textbf{7.} Supercritical & $3D$ OF   $\rightarrow$  $3D$ OF    \\ 
-\textbf{4.} Subcritical   & $2D$ SWE  $\rightarrow$  $3D$  OF & & \textbf{8.} Subcritical   & $3D$ OF   $\rightarrow$  $3D$ OF
-\end{tabular}
-%\caption{Mapping setups}
-%\label{table:1}
-\end{table}
-\end{tcolorbox}
-%\end{minipage}
-%\hspace{1cm}\\
-%\begin{minipage}{.55\textwidth}
-%\addtolength{\leftmargini}{-0.8cm}
-%\begin{itemize}
-\vspace{0.5cm}
-\item<2->[]
-\begin{tcolorbox}[title= \textbf{Scenarios}, colframe=TUMDarkBlue] 
-\begin{table}[!h]
+%\vspace{2.5cm}
+\begin{minipage}{0.45\textwidth}
 \centering
-\begin{tabular}{l|ll|ll}
- & {\large \textbf{Supercritical}} & & {\large \textbf{Subcritical}} &\\[0.3cm]
-\textbf{Case / Domain} & \textbf{Left domain} & \textbf{Right domain} & \textbf{Left domain} & \textbf{Right domain}\\[0.3cm]
-\textbf{SWE $\rightarrow$ SWE} & Radial breaking dam      & Surface at rest   & Radial breaking dam      & Radial breaking dam     \\[0.1cm]
-\textbf{SWE $\rightarrow$ OF}  & Radial breaking dam x2   & Surface at rest & Flow to the right & Surface at rest with wall     \\[0.1cm]
-\textbf{OF $\rightarrow$ SWE}  & Radial breaking dam   & Surface at rest & Flow to the right & Surface at rest with wall   \\[0.1cm]
-\textbf{OF $\rightarrow$ OF}   & Breaking dam      & Empty domain & Breaking dam      & Empty domain with wall
-\end{tabular}
-%\caption{Scenarios for each setup on supercritical flow.}
-%\label{t:condsSup}
-\end{table}
+ \includegraphics[width=1\textwidth]{Resources/Images/pash2.png}
+\end{minipage}
+\hspace{1cm}
+\begin{minipage}{0.42\textwidth}
+\begin{itemize}
+\item<2->[]
+\begin{tcolorbox}[coltitle=white,title= \textbf{Domain-mapping cases},colframe=black, colback=white] 
+\vspace{0.5cm}
+\begin{enumerate}
+\setlength{\itemsep}{1cm}
+\item $2D$ SWE  \ding{222}  $2D$ SWE 
+\item {\only<3>{\color{TUMDarkBlue}}$2D$ SWE  \ding{222}  $3D$ OpenFOAM}   
+\item {\only<3>{\color{TUMDarkBlue}}$3D$ OpenFOAM   \ding{222}  $2D$ SWE}
+\item $3D$ OpenFOAM   \ding{222}  $3D$ OpenFOAM
+\setlength{\itemsep}{0.05cm}
+\item[] \par\noindent\rule{0.85\textwidth}{2pt} 
+\item[] \quad  \textbf{8 cases in total \quad \footnotesize{(sub \& supercritical)}}
+\end{enumerate}
 \end{tcolorbox}
-%\item<3->[]
-%\begin{tcolorbox}[title= \textbf{Subcritical Cases}, colframe=TUMDarkBlue,
-%colback=TUMDarkBlue!30]
-%\begin{table}[!h]
-%\centering
-%\begin{tabular}{lll}
-%\textbf{Case / Domain} & \textbf{Left domain} & \textbf{Right domain} \\[0.3cm]
-%\textbf{SWE $\rightarrow$ SWE} & Radial breaking dam      & Radial breaking dam      \\[0.1cm]
-%\textbf{SWE $\rightarrow$ OF}  & Flow to the right & Surface at rest with wall        \\ [0.1cm]
-%\textbf{OF $\rightarrow$ SWE}  & Flow to the right & Surface at rest with wall      \\[0.1cm]
-%\textbf{OF $\rightarrow$ OF}   & Breaking dam      & Empty domain with wall
-%\end{tabular}
-%%\caption{Scenarios for each setup on subcritical flow.}
-%%\label{t:condsSub}
-%\end{table}
-%\end{tcolorbox}
-
-%\end{itemize}
-%\end{minipage}
 \end{itemize}
+\end{minipage}
 \end{frame}
 
+%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%
 
+
+
+
+%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%
+%\begin{frame}
+%	\shiftedframetitle{3. Implementation}
+%
+%\begin{minipage}{0.28\textwidth}
+% \includegraphics[width=1\textwidth]{Resources/Images/pash2.png}
+%\end{minipage}
+%\hspace{-0.6cm}
+%\begin{minipage}{0.7\textwidth}
+%\begin{itemize}
+%\item<2->[]
+%\begin{tcolorbox}[title= \textbf{Domain Mapping Combinations},colback=white] 
+%\begin{table}[]
+%\begin{tabular}{llp{0.3cm}ll}
+%\textbf{1.} Supercritical & $2D$ SWE  $\rightarrow$  $2D$  SWE  & & \textbf{5.} Supercritical & $3D$ OF   $\rightarrow$  $2D$ SWE  \\ 
+%\textbf{2.} Subcritical   & $2D$ SWE  $\rightarrow$  $2D$  SWE & & \textbf{6.} Subcritical   & $3D$ OF   $\rightarrow$  $2D$ SWE     \\[0.2cm]
+%\textbf{3.} Supercritical & $2D$ SWE  $\rightarrow$  $3D$  OF   & & \textbf{7.} Supercritical & $3D$ OF   $\rightarrow$  $3D$ OF    \\ 
+%\textbf{4.} Subcritical   & $2D$ SWE  $\rightarrow$  $3D$  OF & & \textbf{8.} Subcritical   & $3D$ OF   $\rightarrow$  $3D$ OF
+%\end{tabular}
+%\end{table}
+%\end{tcolorbox}
+%\end{itemize}
+%\end{minipage}
+%
+%
+%\begin{itemize}
+%\item<3->[]
+%\begin{tcolorbox}[title= \textbf{Scenarios}, colback=white] 
+%\begin{table}[!h]
+%\centering
+%\begin{tabular}{l|ll|ll}
+% & {\large \textbf{Supercritical}} & & {\large \textbf{Subcritical}} &\\[0.3cm]
+%\textbf{Case / Domain} & \textbf{Left domain} & \textbf{Right domain} & \textbf{Left domain} & \textbf{Right domain}\\[0.3cm]
+%\textbf{SWE $\rightarrow$ SWE} & Radial breaking dam      & Surface at rest   & Radial breaking dam      & Radial breaking dam     \\[0.1cm]
+%\textbf{SWE $\rightarrow$ OF}  & Radial breaking dam x2   & Surface at rest & Flow to the right & Surface at rest with wall     \\[0.1cm]
+%\textbf{OF $\rightarrow$ SWE}  & Radial breaking dam   & Surface at rest & Flow to the right & Surface at rest with wall   \\[0.1cm]
+%\textbf{OF $\rightarrow$ OF}   & Breaking dam      & Empty domain & Breaking dam      & Empty domain with wall
+%\end{tabular}
+%\end{table}
+%\end{tcolorbox}
+%\end{itemize}
+%\end{frame}
+
+%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%
 \begin{frame}
 %TODO improve this slide
 \shiftedframetitle{3. Implementation}
@@ -84,11 +101,173 @@ Supercritical  \case{OF}{OF} &   &  $\begin{aligned}[t] \alpha_{right} = \alpha_
 \end{tabular}
 %\caption{Dirichlet and Neumann boundary conditions for the inter-dimensional combinations and flow characterization \cite{mintgen}, and for the cases on the same dimension.}
 \end{table}
-
-
-%\begin{figure}
-%\includegraphics[scale=0.43]{Resources/Images/bcs_mintgen.png}
-%\caption{Boundary conditions \cite{mintgen}}
-%\end{figure}
 \end{frame}
 
+%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%
+\begin{frame}
+%TODO improve this slide
+\shiftedframetitle{3. Implementation}
+\begin{table}[]
+\begin{tabular}{p{4cm}p{5cm}p{5cm}}\hline
+                        & \myTUMdarkblue{\textbf{SWE}} & \myTUMorange{\textbf{interFoam}} \\\hline
+\textbf{Description}    & \textbf{}    & \textbf{}          \\
+                        & bal          & bla                \\\hline
+\textbf{Main variables} & \textbf{}    & \textbf{}          \\
+                        & height       & alpha              \\
+                        & velocity x    & pressure           \\
+                        & velocity y             & velocity   x     \\
+                        & discharge x             & velocity   y       \\
+                        & discharge y             &        
+\end{tabular}
+\end{table}
+\end{frame}
+
+
+%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%
+\begin{frame}
+%TODO improve this slide
+\shiftedframetitle{3. Implementation}
+\begin{minipage}{0.5\textwidth}
+\centering
+\Large \underline{Supercritical} $2D$ SWE  \ding{222}  $3D$ OpenFOAM 
+\end{minipage}
+\hspace{5cm}
+\begin{minipage}{0.21\textwidth}
+{\scriptsize
+\begin{tcolorbox}[colframe=black, colback=white] 
+\setlength{\leftmargini}{0pt}
+\begin{enumerate}
+\item[] {\color{black!50}$2D$ SWE  \ding{222}  $2D$ SWE}
+\item[] $2D$ SWE  \ding{222}  $3D$ OpenFOAM  
+\item[] {\color{black!50}$3D$ OpenFOAM   \ding{222}  $2D$ SWE}
+\item[] {\color{black!50}$3D$ OpenFOAM   \ding{222}  $3D$ OpenFOAM}
+\end{enumerate}
+\end{tcolorbox}}
+\end{minipage}
+
+\hspace{-1cm}
+\begin{minipage}{0.2\textwidth}
+\begin{itemize}
+\setlength{\leftmargini}{0pt}
+\item<2->[]
+\begin{figure}
+\includegraphics[width=1.1\textwidth]{Resources/Images/imagesThesis/swe_of_sup_schem_top_slides.png}\\[0.2cm]
+\includegraphics[width=1.1\textwidth]{Resources/Images/imagesThesis/swe_of_sup_schem_side.png}
+\caption{Top and side views  2D SWE - 3D OF}
+\end{figure}
+\end{itemize}
+\end{minipage}
+\hspace{1cm}
+\begin{minipage}{0.3\textwidth}
+\vspace{-1.5cm}
+\footnotesize
+\begin{itemize}
+\setlength{\leftmargini}{0pt}
+\item<3->[]
+\begin{table}[!ht]
+\centering
+\begin{tabular}{ccc}
+\textbf{Boundary Cs.} & & \\ \\ \hline
+  &$ h$ and $q$ on $\Gamma_{2D}$ & $\alpha, p$ and $u$ on $\Gamma_{3D}$ \\\hline
+Sup. {SWE $\rightarrow$ OF}  & $\begin{aligned}[t] {\partial{h}/\partial{n} = 0} \\ {\partial{q}/\partial{n} = 0} \end{aligned}$                 &  $\begin{aligned}[t] {\alpha = f(h)} \\ {\partial{p}/\partial{n} = 0}  \\ {u = f(q,u)}   \end{aligned}$ 
+\end{tabular}
+\end{table}
+\end{itemize}
+\end{minipage}
+\hspace{1.7cm}
+\begin{minipage}{0.40\textwidth}
+\begin{itemize}
+\setlength{\leftmargini}{0pt}
+\item<4->[]
+\small
+\textbf{Volume fraction} ${\alpha_{\Gamma_{3D}}}$
+\begin{align*}
+\alpha_{\Gamma_{3D}} &=  \begin{cases}
+	0, &  \htwD \leq \hthD - 0.5 \Delta \hthD\\
+	1, &  \htwD \leq \hthD - 0.5 \Delta \hthD\\
+	\dfrac{\htwD-\hthD}{\Delta \hthD} + 0.5, & \text{otherwise}
+	\end{cases}
+\end{align*}
+\textbf{Velocity} $u$
+\begin{align*}
+\uthD &= \utwD \ \alpha_{\Gamma_{3D}}
+\end{align*}
+\end{itemize}
+\end{minipage}
+
+\end{frame}
+
+
+
+%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%
+\begin{frame}
+%TODO improve this slide
+\shiftedframetitle{3. Implementation}
+\begin{minipage}{0.5\textwidth}
+\centering
+\Large \underline{Subcritical} $3D$ SWE  \ding{222}  $2D$ OpenFOAM 
+\end{minipage}
+\hspace{5cm}
+\begin{minipage}{0.21\textwidth}
+{\scriptsize
+\begin{tcolorbox}[colframe=black, colback=white] 
+\setlength{\leftmargini}{0pt}
+\begin{enumerate}
+\item[] {\color{black!50}$2D$ SWE  \ding{222}  $2D$ SWE}
+\item[] {\color{black!50}$2D$ SWE  \ding{222}  $3D$ OpenFOAM}  
+\item[] $3D$ OpenFOAM   \ding{222}  $2D$ SWE
+\item[] {\color{black!50}$3D$ OpenFOAM   \ding{222}  $3D$ OpenFOAM}
+\end{enumerate}
+\end{tcolorbox}}
+\end{minipage}
+
+\hspace{-1cm}
+\begin{minipage}{0.2\textwidth}
+\begin{itemize}
+\setlength{\leftmargini}{0pt}
+\item<2->[]
+\begin{figure}
+\includegraphics[width=1.1\textwidth]{Resources/Images/imagesThesis/of_swe_sub_schem_top_slides.png}\\[0.2cm]
+\includegraphics[width=1.1\textwidth]{Resources/Images/imagesThesis/of_swe_sub_schem_side_slides.png}
+\caption{Top and side views  2D SWE - 3D OF}
+\end{figure}
+\end{itemize}
+\end{minipage}
+\hspace{1cm}
+\begin{minipage}{0.3\textwidth}
+\vspace{-1.5cm}
+\footnotesize
+\begin{itemize}
+\setlength{\leftmargini}{0pt}
+\item<3->[]
+\begin{table}[!ht]
+\centering
+\begin{tabular}{ccc}
+\textbf{Boundary Cs.} & & \\ \\ \hline
+  &$ h$ and $q$ on $\Gamma_{2D}$ & $\alpha, p$ and $u$ on $\Gamma_{3D}$ \\\hline
+Sub.  \case{OF}{SWE} & $\begin{aligned}[t] \partial{h}/\partial{n} = 0 \\ q=\qthD \end{aligned}$                 &  $\begin{aligned}[t] \partial{\alpha}/\partial{n} = 0 \\ p = f(h) \\ \partial{u}/\partial{n} = 0 \end{aligned}$                \\ \hline
+\end{tabular}
+\end{table}
+\end{itemize}
+\end{minipage}
+\hspace{1.7cm}
+\begin{minipage}{0.40\textwidth}
+\begin{itemize}
+\setlength{\leftmargini}{0pt}
+\item<4->[]
+\small
+\textbf{Discharge} $q_{\Gamma_{3D}}$
+\begin{align*}
+hola
+\end{align*}
+\textbf{Pressure} ${\rho}$
+\begin{align*}
+hola
+\end{align*}
+\end{itemize}
+\end{minipage}
+
+\end{frame}
