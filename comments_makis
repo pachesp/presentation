@@ -1,0 +1,6 @@
+small typo (missing space): It is possible to extend the SWE-NS (partially)outside the OpenFOAM framework
+even though I don't understand the meaning of this sentence. I think more important is that the additional conversions need to be implemented inside one of the adapters
+SWE solver omits viscosity, while interFoam does: does what? ;-)
+The implicit coupling should improve the results a lot, as it iterates between the solvers. Stick on this and be ready to answer a question on why we did not try it
+
+

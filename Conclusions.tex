@@ -2,18 +2,25 @@
 %%%%%%%%%%%%%%%%%%
 %%%%%%%%%%%%%%%%%%
 \begin{frame}
-\shiftedframetitle{6. Conclusions}
-\begin{block}{Conclusion 1}
-short description
+\shiftedframetitle{5. Conclusions}
+\vspace{1cm}
+\begin{block}{Discontinuities on the subdomain's interface}
+\begin{itemize}
+\item discontinuities are more prominent in the subcritical case (unsuccessful OpenFOAM-OpenFOAM subcritical case)
+\item grid resolution has influence on the discontinuities
+\item "simple" mapping techniques (e.g.~velocity mapping)
+\item omission of viscosity terms in \textit{SWE solver}
+\end{itemize}
+\end{block}
+\vspace{1cm}
+\begin{block}{preCICE across 2D and 3D domains}
+\begin{itemize}
+\item It is possible to couple subdomains with solvers on different dimensions with preCICE
+\item It is possible to extend the SWE-NS models outside the OpenFOAM framework
+\end{itemize}
+
 \end{block}
 
-\begin{block}{Conclusion 2}
-short description
-\end{block}
-
-\begin{block}{Conclusion 3}
-short description
-\end{block}
 
 \end{frame}
 
@@ -54,16 +61,36 @@ short description
 %%%%%%%%%%%%%%%%%%
 %%%%%%%%%%%%%%%%%%
 \begin{frame}
-\shiftedframetitle{Future Work}
+\shiftedframetitle{5. Future Work}
 
-\begin{exampleblock}{Future Work 2}
-short description
+\begin{itemize}
+\item[]
+\begin{exampleblock}{Include viscosity terms }
+\textit{SWE solver} omits viscosity, while \textit{interFoam} does consider them.  
+\end{exampleblock}
+\item[]
+
+\begin{exampleblock}{Mapping with different resolutions}
+Currently, mapping between \textit{SWE solver} and \textit{interFoam} is done at a common edge/face with same resolution
+\end{exampleblock}
+\item[]
+
+\begin{exampleblock}{Implicit coupling}
+\textit{SWE solver} and \textit{interFoam} were coupled using explicit coupling from preCICE
+\end{exampleblock}
+\item[]
+
+\begin{exampleblock}{Add source terms}
+Seafloor profiles were not considered in \textit{SWE solver}
+\end{exampleblock}
+\item[]
+
+\begin{exampleblock}{Try out different mapping algorithms}
+Adapter in \textit{SWE solver}  allows to easily add or modify mapping algorithms 
 \end{exampleblock}
 
-\begin{exampleblock}{Future Work 2}
-short description
-\end{exampleblock}
 
+\end{itemize}
 
 
 \end{frame}
